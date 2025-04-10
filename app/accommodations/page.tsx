@@ -103,13 +103,14 @@ export default function AccommodationsPage() {
 
         <div className="container relative z-10 text-center px-4">
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-6xl font-serif text-warm-ivory mb-6 text-center px-4 max-w-5xl mx-auto leading-tight break-words"
+            className="text-2xl sm:text-4xl md:text-6xl font-serif text-warm-ivory mb-6 text-center px-4 max-w-full sm:max-w-5xl mx-auto leading-tight break-words"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             Our Accommodations
           </motion.h1>
+
 
 
           <motion.p
