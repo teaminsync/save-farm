@@ -86,13 +86,14 @@ export default function ActivitiesPage() {
 
         <div className="container relative z-10 text-center px-4">
           <motion.h1
-            className="text-4xl md:text-6xl font-serif text-warm-ivory mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl font-serif text-warm-ivory mb-6 text-center px-4 max-w-4xl mx-auto leading-tight break-words"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             Farm Activities
           </motion.h1>
+
 
           <motion.p
             className="text-lg md:text-xl text-warm-ivory/90 max-w-2xl mx-auto"
@@ -141,9 +142,8 @@ export default function ActivitiesPage() {
           {activities.map((activity, index) => (
             <motion.div
               key={activity.id}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 ${index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
