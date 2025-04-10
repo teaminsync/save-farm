@@ -86,7 +86,7 @@ export default function Header() {
           aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
         >
           {isMobileMenuOpen ? (
-            <X className={`h-6 w-6 ${isScrolled ? 'text-fern' : 'text-warm-ivory'}`} />
+            <X className="h-6 w-6 text-fern" />
           ) : (
             <Menu className={`h-6 w-6 ${isScrolled ? 'text-fern' : 'text-warm-ivory'}`} />
           )}
