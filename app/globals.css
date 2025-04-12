@@ -140,6 +140,11 @@ html.has-scroll-dragging {
   min-height: 100vh;
 }
 
+.glass-inner-glow {
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+
 [data-scroll-direction="horizontal"] [data-scroll-container] {
   height: 100vh;
   display: inline-block;

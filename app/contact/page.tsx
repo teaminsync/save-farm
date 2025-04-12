@@ -85,28 +85,48 @@ export default function ContactPage() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    if (validateForm()) {
-      // In a real implementation, this would send the form data to a server
-      console.log("Form submitted:", formData)
-
-      // Show success toast
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    if (!validateForm()) return;
+  
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbyR8IphBXLjCcxT6W1_ExWvzDEn9V2Sd1CyIUtczFU7XP5joANeXfiLIWEGC2TzgW2vbg/exec", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
+  
+      const result = await response.json();
+  
+      if (result.result === "success") {
+        toast({
+          title: "Message Sent",
+          description: "Thank you for contacting Save Farm. We'll get back to you soon!",
+        });
+  
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        toast({
+          title: "Something went wrong",
+          description: "Please try again or contact us directly.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
       toast({
-        title: "Message Sent",
-        description: "Thank you for contacting Save Farm. We'll get back to you soon!",
-      })
-
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      })
+        title: "Error",
+        description: "Unable to submit form. Please check your internet connection.",
+        variant: "destructive",
+      });
     }
-  }
+  };
+  
 
   return (
     <LocomotiveLayout>
