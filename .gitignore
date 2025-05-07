@@ -1,0 +1,44 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+/node_modules/
+
+# Build output
+/.next/
+/out/
+/build/
+
+# Production
+/vercel/
+
+# Static exports
+/export/
+
+# Logs and debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment variables
+.env*
+.env.*.local
+
+# TypeScript build artifacts
+*.tsbuildinfo
+next-env.d.ts
+
+# OS / Editor folders
+.DS_Store
+.vscode/
+.idea/
+
+# Lint cache
+.eslintcache
+
+# Video and large media
+*.MOV
+
+# Optional: uncomment if you want to exclude test snapshots or coverage
+# coverage/
+# *.snap

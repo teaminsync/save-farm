@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- LOCAL FONTS --- */
+@font-face {
+  font-family: "Serena";
+  src: url("/fonts/Serena.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- BASE LAYER OVERRIDES --- */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+
+    /* Custom Brand Colors */
+    --warm-ivory: 47 75% 92%;
+    --fern: 90 20% 22%;
+    --natural: 35 20% 55%;
+
+    /* Font variables */
+    --font-serif: "Serena";
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Font classes */
+  h1, h2, h3, h4, h5, h6,
+  .font-serif {
+    font-family: var(--font-serif), serif;
+  }
+
+  p, span, button, input, textarea, select, li, a,
+  .font-sans {
+    font-family: var(--font-sans), sans-serif;
+  }
+}
+
+/* --- CUSTOM BRAND COLORS --- */
+.bg-warm-ivory {
+  background-color: #fbf3db;
+}
+
+.bg-fern {
+  background-color: #37422e;
+}
+
+.bg-natural {
+  background-color: #a58e74;
+}
+
+.text-warm-ivory {
+  color: #fbf3db;
+}
+
+.text-fern {
+  color: #37422e;
+}
+
+.text-natural {
+  color: #a58e74;
+}
+
+.border-fern {
+  border-color: #37422e;
+}
+
+.border-warm-ivory {
+  border-color: #fbf3db;
+}
+
+.border-natural {
+  border-color: #a58e74;
+}
+
+/* Fix for Locomotive Scroll during transitions */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+html.has-scroll-dragging {
+  user-select: none;
+}
+
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh;
+}
+
+.glass-inner-glow {
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+
+[data-scroll-direction="horizontal"] [data-scroll-container] {
+  height: 100vh;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+[data-scroll-direction="horizontal"] [data-scroll-section] {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  height: 100%;
+}
