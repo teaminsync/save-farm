@@ -154,9 +154,9 @@ export default function Footer() {
     }
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbxOJm6IcjgAggmp7lXnppw0RsV2Dl7Vu9Uihn3fl-Py8lL2p17fce0hrTz7wHk5C6dQ/exec", {
+      const res = await fetch("/api/newsletter", {
         method: "POST",
-        mode: "cors",
+
         headers: {
           "Content-Type": "application/json",
         },
