@@ -147,7 +147,7 @@ export default function AccommodationsPage() {
       ]
     }
   ];
-  
+
 
   return (
     <LocomotiveLayout>
@@ -175,7 +175,7 @@ export default function AccommodationsPage() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-warm-ivory/90 max-w-2xl mx-auto"
+            className="text-lg md:text-2xl text-warm-ivory/90 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -229,7 +229,13 @@ export default function AccommodationsPage() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
                 <div className="relative h-80">
-                  <ImageGallery images={accommodation.images} /> {/* Image gallery slideshow for each accommodation */}
+                  <ImageGallery
+                    images={accommodation.images.map((src) => ({
+                      src,
+                      alt: `Image of ${accommodation.name}` // or any appropriate alt text
+                    }))}
+                  />
+
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-serif text-fern mb-4">{accommodation.name}</h3>

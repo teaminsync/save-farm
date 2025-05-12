@@ -80,7 +80,7 @@ export default function Home() {
     <LocomotiveLayout>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden" data-scroll-section>
-        {/* <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
+        <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
           <video
             src="/images/hero-background.mov"  // Path to your .mov video
             alt="Save Farm serene landscape"
@@ -90,8 +90,8 @@ export default function Home() {
             className="object-cover w-full h-full"
           />
           <div className="absolute inset-0 bg-fern/20" />
-        </motion.div> */}
-        <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
+        </motion.div>
+        {/* <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
           <Image
             src="/images/hero-background.jpg"
             alt="Save Farm serene landscape"
@@ -100,7 +100,7 @@ export default function Home() {
             priority
           />
           <div className="absolute inset-0 bg-fern/20" />
-        </motion.div>
+        </motion.div> */}
 
 
 

@@ -266,7 +266,16 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-medium text-fern mb-2">Phone</h3>
                     <p className="text-natural">02528-241130</p>
-                    <p className="text-natural">+91 99211 77335</p>
+                    <p className="text-natural">
+      <a
+        href="https://wa.me/919921177335"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-fern"
+      >
+        +91 99211 77335
+      </a>
+    </p>
                   </div>
                 </div>
 
@@ -274,7 +283,14 @@ export default function ContactPage() {
                   <Mail className="h-6 w-6 text-fern mr-4 mt-1" />
                   <div>
                     <h3 className="text-lg font-medium text-fern mb-2">Email</h3>
-                    <p className="text-natural">aditya@savefarm.in</p>
+                     <p className="text-natural">
+      <a
+        href="mailto:aditya@savefarm.in"
+        className="hover:text-fern"
+      >
+        aditya@savefarm.in
+      </a>
+    </p>
                   </div>
                 </div>
               </div>

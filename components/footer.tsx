@@ -156,7 +156,7 @@ export default function Footer() {
     try {
       const res = await fetch("https://script.google.com/macros/s/AKfycbxOJm6IcjgAggmp7lXnppw0RsV2Dl7Vu9Uihn3fl-Py8lL2p17fce0hrTz7wHk5C6dQ/exec", {
         method: "POST",
-        mode:"cors",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
@@ -194,25 +194,25 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="#" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
+                <Link href="https://www.facebook.com/@SaveFarmOfficial" target="_blank" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
                   <Facebook className="h-5 w-5" />
                   <span className="sr-only">Facebook</span>
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="#" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
+                <Link href="https://www.instagram.com/savefarmofficial/" target="_blank" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
                   <Instagram className="h-5 w-5" />
                   <span className="sr-only">Instagram</span>
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="https://wa.me/919921177335" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
+                <Link href="https://wa.me/919921177335" target="_blank" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
                   <Phone className="h-5 w-5" />
                   <span className="sr-only">WhatsApp</span>
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="https://www.youtube.com/yourchannel" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
+                <Link href="https://www.youtube.com/@SaveFarmGholvad" target="_blank" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
                   <Youtube className="h-5 w-5" />
                   <span className="sr-only">YouTube</span>
                 </Link>
@@ -232,6 +232,11 @@ export default function Footer() {
               <li>
                 <Link href="/about" className="text-warm-ivory/80 hover:text-warm-ivory transition-colors text-sm">
                   About Us
+                </Link>
+              </li>
+               <li>
+                <Link href="/tarpa" className="text-warm-ivory/80 hover:text-warm-ivory transition-colors text-sm">
+                  Tarpa
                 </Link>
               </li>
               <li>
@@ -268,10 +273,29 @@ export default function Footer() {
                 <br />
                 Maharashtra 401702
               </p>
-              <p className="text-warm-ivory/80 text-sm mb-2">Phone: +91 99211 77335</p>
-              <p className="text-warm-ivory/80 text-sm">Email: aditya@savefarm.in</p>
+              <p className="text-warm-ivory/80 text-sm mb-2">
+                Phone:{" "}
+                <a
+                  href="https://wa.me/919921177335"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-warm-ivory"
+                >
+                  +91 99211 77335
+                </a>
+              </p>
+              <p className="text-warm-ivory/80 text-sm">
+                Email:{" "}
+                <a
+                  href="mailto:aditya@savefarm.in"
+                  className="hover:text-warm-ivory"
+                >
+                  aditya@savefarm.in
+                </a>
+              </p>
             </address>
           </div>
+
 
           {/* Newsletter */}
           <div>
