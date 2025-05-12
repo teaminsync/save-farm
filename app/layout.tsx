@@ -5,6 +5,8 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import FloatingContactButton from "@/components/floating-contact-button"
+import AudioControlButton from "@/components/audio-control-button"
+import { AudioProvider } from "@/context/audio-context"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -39,9 +41,12 @@ export default function RootLayout({
         data-scroll-container
         className={`${montserrat.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          <AudioProvider>
           {children}
           <FloatingContactButton />
+          <AudioControlButton />
           <Toaster />
+        </AudioProvider>  
         </ThemeProvider>
       </body>
     </html>

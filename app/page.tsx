@@ -10,6 +10,7 @@ import { ArrowRight } from "lucide-react"
 
 import LocomotiveLayout from "@/components/locomotive-layout"
 import { Button } from "@/components/ui/button"
+import AudioInteractionPrompt from "@/components/audio-interaction-prompt"
 
 export default function Home() {
   const logoRef = useRef(null)
@@ -78,11 +79,14 @@ export default function Home() {
 
   return (
     <LocomotiveLayout>
+      {/* Add the AudioInteractionPrompt here */}
+      <AudioInteractionPrompt />
+
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden" data-scroll-section>
         <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
           <video
-            src="/images/hero-background.mov"  // Path to your .mov video
+            src="/images/hero-background.mov" // Path to your .mov video
             alt="Save Farm serene landscape"
             autoPlay
             loop
@@ -101,9 +105,6 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-fern/20" />
         </motion.div> */}
-
-
-
 
         <div className="container relative z-10 text-center px-4">
           <motion.div
@@ -162,6 +163,7 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Rest of your sections remain unchanged */}
       {/* Introduction Section */}
       <section className="py-20 bg-warm-ivory" data-scroll-section ref={introRef}>
         <div className="container px-4">
@@ -183,7 +185,9 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Save Farm is built on the vision of reconnecting people with the land—offering an authentic rural experience grounded in sustainability, culture, and community. Our mission is to transform tourism into a tool for awareness, well-being, and ecological balance.
+              Save Farm is built on the vision of reconnecting people with the land—offering an authentic rural
+              experience grounded in sustainability, culture, and community. Our mission is to transform tourism into a
+              tool for awareness, well-being, and ecological balance.
             </motion.p>
 
             <motion.div

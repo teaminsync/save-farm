@@ -53,11 +53,11 @@ export default function Footer() {
               </div>
               <span className="ml-2 font-serif text-xl">
                 S
-                <span style={{ position: 'relative', display: 'inline-block', letterSpacing: '-0.14em' }}>
+                <span style={{ position: 'relative', display: 'inline-block', letterSpacing: '-0.15em' }}>
                   <span className="font-serif">A</span>
-                  <span style={{ position: 'absolute', top: '-0.08em', left: '-0.05em', fontSize: '1.5em' }}>ˉ</span>
+                  <span style={{ position: 'absolute', top: '-0.0em', left: '-0.05em', fontSize: '1.5em', fontWeight: 'lighter', }}>ˉ</span>
                 </span>
-                vÉ Farm
+                VÉ FARMS
               </span>
             </div>
             <p className="text-warm-ivory/80 text-sm mb-4">

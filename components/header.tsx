@@ -65,7 +65,7 @@
 //             </span>
 //           </div>
 //         </Link>
-        
+
 //         <nav className="hidden md:flex items-center space-x-8">
 //           {navLinks.map((link) => (
 //             <Link
@@ -168,9 +168,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-warm-ivory shadow-md py-2' : 'bg-transparent py-4'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-warm-ivory shadow-md py-2' : 'bg-transparent py-4'
+        }`}
     >
       <div className="container px-4 mx-auto flex items-center justify-between">
         <Link href="/" className="relative z-50">
@@ -187,19 +186,17 @@ export default function Header() {
                 className="object-contain"
               />
             </div>
-           <span
-  className={`ml-2 font-serif text-xl ${
-    isScrolled || isMobileMenuOpen ? 'text-fern' : 'text-warm-ivory'
-  }`}
->
-  S
-  <span style={{ position: 'relative', display: 'inline-block', letterSpacing: '-0.14em' }}>
-    <span className="font-serif">A</span>
-    <span style={{ position: 'absolute', top: '-0.08em', left: '-0.05em', fontSize: '1.5em' }}>ˉ</span>
-  </span>
-  VÉ FARM
-</span>
-
+            <span
+              className={`ml-2 font-serif text-xl ${isScrolled || isMobileMenuOpen ? 'text-fern' : 'text-warm-ivory'
+                }`}
+            >
+              S
+              <span style={{ position: 'relative', display: 'inline-block', letterSpacing: '-0.15em' }}>
+                <span className="font-serif">A</span>
+                <span style={{ position: 'absolute', top: '-0.0em', left: '-0.05em', fontSize: '1.5em', fontWeight: 'lighter', }}>ˉ</span>
+              </span>
+              VÉ FARMS
+            </span>
           </div>
         </Link>
 
@@ -208,9 +205,8 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`font-medium transition-colors duration-200 ${
-                isScrolled ? 'text-fern hover:text-fern/70' : 'text-warm-ivory hover:text-warm-ivory/70'
-              }`}
+              className={`font-medium transition-colors duration-200 ${isScrolled ? 'text-fern hover:text-fern/70' : 'text-warm-ivory hover:text-warm-ivory/70'
+                }`}
             >
               {link.label}
             </Link>
