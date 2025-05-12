@@ -34,7 +34,9 @@ export default function AudioInteractionPrompt() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
-          className="fixed bottom-6 left-20 transform -translate-x-1/2 z-50 bg-warm-ivory/90 backdrop-blur-sm text-fern px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 max-w-xs"
+          // Apply different styles based on the screen size
+          className="fixed bottom-20 left-6 transform -translate-x-1/2 z-50 bg-warm-ivory/90 backdrop-blur-sm text-fern px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 max-w-xs 
+                     sm:bottom-6 sm:left-20 sm:transform-none sm:-translate-x-0"
         >
           <Volume2 className="h-5 w-5 flex-shrink-0" />
           <div className="text-sm">
