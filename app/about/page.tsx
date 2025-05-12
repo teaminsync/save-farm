@@ -102,7 +102,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            About Save Farm
+            About Us
           </motion.h1>
 
           <motion.p

@@ -187,13 +187,19 @@ export default function Header() {
                 className="object-contain"
               />
             </div>
-            <span
-              className={`ml-2 font-serif text-xl ${
-                isScrolled || isMobileMenuOpen ? 'text-fern' : 'text-warm-ivory'
-              }`}
-            >
-              SAVE FARM
-            </span>
+           <span
+  className={`ml-2 font-serif text-xl ${
+    isScrolled || isMobileMenuOpen ? 'text-fern' : 'text-warm-ivory'
+  }`}
+>
+  S
+  <span style={{ position: 'relative', display: 'inline-block', letterSpacing: '-0.14em' }}>
+    <span className="font-serif">A</span>
+    <span style={{ position: 'absolute', top: '-0.08em', left: '-0.05em', fontSize: '1.5em' }}>ˉ</span>
+  </span>
+  VÉ FARM
+</span>
+
           </div>
         </Link>
 
