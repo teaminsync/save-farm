@@ -70,6 +70,10 @@ export default function ContactPage() {
   const validateForm = () => {
     const newErrors = {};
 
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required"
+    }
+
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required"; // Phone is required
     }
