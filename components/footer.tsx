@@ -234,7 +234,7 @@ export default function Footer() {
                   About Us
                 </Link>
               </li>
-               <li>
+              <li>
                 <Link href="/tarpa" className="text-warm-ivory/80 hover:text-warm-ivory transition-colors text-sm">
                   Tarpa
                 </Link>
