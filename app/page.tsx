@@ -114,11 +114,11 @@ export default function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
-            <Image src="/images/save-farm-logo-scrolled.svg" alt="Save Farm Logo" fill className="object-contain" />
+            <Image src="/images/save-farm-logo.svg" alt="Save Farm Logo" fill className="object-contain" />
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-6xl font-serif text-fern mb-6"
+            className="text-4xl md:text-6xl font-serif text-warm-ivory mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
