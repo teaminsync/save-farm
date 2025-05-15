@@ -117,7 +117,7 @@ export default function TarpaPage() {
         <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/tarpa-hero.jpg"
+              src="/images/tarpa-hero.png"
               alt="Tarpa - Save Farm's signature experience"
               fill
               className="object-cover"
