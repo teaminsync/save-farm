@@ -79,20 +79,20 @@ export default function Home() {
 
   return (
     <LocomotiveLayout>
-      {/* Add the AudioInteractionPrompt here */}
       <AudioInteractionPrompt />
 
-      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden" data-scroll-section>
         <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
           <video
-            src="/images/hero-background.mp4" // Path to your .mov video
-            alt="Save Farm serene landscape"
+            src="/images/hero-background.mp4"
             autoPlay
             loop
             muted
             className="object-cover w-full h-full"
-          />
+          >
+            Save Farm serene landscape video.
+          </video>
+
           <div className="absolute inset-0 bg-fern/20" />
         </motion.div>
         {/* <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
@@ -147,6 +147,14 @@ export default function Home() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
+
+            {/* <Button asChild className="bg-fern hover:bg-fern/90 text-warm-ivory px-6 py-3 text-lg">
+              <Link href="/accommodations" className="flex items-center">
+                Explore Accommodations
+                <ArrowRight className="ml-2 h-6 w-6" />
+              </Link>
+            </Button> */}
+
           </motion.div>
         </div>
 
