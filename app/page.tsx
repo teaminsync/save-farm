@@ -86,7 +86,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden" data-scroll-section>
         <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
           <video
-            src="/images/hero-background.mov" // Path to your .mov video
+            src="/images/hero-background.mp4" // Path to your .mov video
             alt="Save Farm serene landscape"
             autoPlay
             loop
