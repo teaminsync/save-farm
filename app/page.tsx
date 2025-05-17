@@ -405,10 +405,13 @@ const testimonials = [
       <h2 className="text-3xl md:text-4xl font-serif text-fern mb-12 text-center">
         What Our Guests Say
       </h2>
-      <TestimonialCarousel testimonials={testimonials} />
+      <div className="min-h-[300px] md:min-h-[180px]">
+        <TestimonialCarousel testimonials={testimonials} />
+      </div>
     </motion.div>
   </div>
 </section>
+
 
 
 
