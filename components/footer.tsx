@@ -61,8 +61,9 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-warm-ivory/80 text-sm mb-4">
-              Reconnect with nature in our sustainable luxury farm retreat.
+              Reconnect with nature in our sustainable farm retreat offering modern comforts.
             </p>
+
             <div className="flex space-x-4">
               <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
                 <Link href="https://www.facebook.com/@SaveFarmOfficial" target="_blank" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">

@@ -111,7 +111,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Our story, mission, and commitment to sustainable luxury
+            Our story, mission, and commitment to sustainable living with modern comforts
           </motion.p>
         </div>
       </section>
@@ -131,34 +131,34 @@ export default function AboutPage() {
             </motion.h2>
 
             <motion.p
-  className="text-natural text-lg mb-8 leading-relaxed"
-  initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.8, delay: 0.2 }}
->
-  Save Farm is built on the vision of reconnecting people with the land—offering an authentic rural experience grounded in sustainability, culture, and community. Our mission is to transform tourism into a tool for awareness, well-being, and ecological balance.
-</motion.p>
+              className="text-natural text-lg mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Save Farm is built on the vision of reconnecting people with the land—offering an authentic rural experience grounded in sustainability, culture, and community. Our mission is to transform tourism into a tool for awareness, well-being, and ecological balance.
+            </motion.p>
 
-<motion.p
-  className="text-natural text-lg mb-8 leading-relaxed"
-  initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.8, delay: 0.3 }}
->
-  We strive to create a sanctuary where guests experience the serenity of village life, learn about organic farming, and immerse themselves in nature without compromising on comfort. Every stay supports conservation, local livelihoods, and mindful tourism.
-</motion.p>
+            <motion.p
+              className="text-natural text-lg mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              We strive to create a sanctuary where guests experience the serenity of village life, learn about organic farming, and immerse themselves in nature without compromising on comfort. Every stay supports conservation, local livelihoods, and mindful tourism.
+            </motion.p>
 
-<motion.p
-  className="text-natural text-lg leading-relaxed"
-  initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.8, delay: 0.4 }}
->
-  Whether it’s walking through our orchards, joining a Warli art session, or simply listening to birdsong at sunrise—Save Farm invites you to slow down, engage with your surroundings, and rediscover the joy of living in harmony with nature.
-</motion.p>
+            <motion.p
+              className="text-natural text-lg leading-relaxed"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Whether it’s walking through our orchards, joining a Warli art session, or simply listening to birdsong at sunrise—Save Farm invites you to slow down, engage with your surroundings, and rediscover the joy of living in harmony with nature.
+            </motion.p>
 
           </div>
         </div>
@@ -166,57 +166,60 @@ export default function AboutPage() {
 
       {/* History Section */}
       <section className="py-20 bg-fern/10" data-scroll-section ref={historyRef}>
-  <div className="container px-4">
-    <div className="max-w-4xl mx-auto">
-      <motion.h2
-        className="text-3xl md:text-4xl font-serif text-fern mb-8 text-center"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        Our History
-      </motion.h2>
+        <div className="container px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              className="text-3xl md:text-4xl font-serif text-fern mb-8 text-center"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              Our History
+            </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className="relative h-80 rounded-lg overflow-hidden">
-            <Image
-              src="/images/farm-history.jpg"
-              alt="Save Farm in its early days"
-              fill
-              className="object-cover"
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className="relative h-80 rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/farm-history.jpeg"
+                    alt="Save Farm in its early days"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-center text-natural mt-3 font-semibold text-lg italic">
+                  Mr. Prabhakar Save
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <p className="text-natural text-lg mb-6 leading-relaxed">
+                  Save Farm was born from a dream to transform barren land into a thriving horticultural paradise. What began in 1970 as a passion project by the Save family soon blossomed into a lush orchard in Maharashtra’s Konkan region.
+                </p>
+
+                <p className="text-natural text-lg mb-6 leading-relaxed">
+                  Decades of scientific farming and experimentation led to the birth of Save Nursery — now a trusted name in plant supply and green knowledge sharing. Our hands-on expertise continues to inspire farmers, students, and eco-tourists alike.
+                </p>
+
+                <p className="text-natural text-lg leading-relaxed">
+                  In 2015, we introduced Tarpa, our agro-eco tourism initiative rooted in Warli culture and sustainable living. Today, Save Farm stands as a symbol of regeneration, offering rural stays that are both restorative and rooted in tradition.
+                </p>
+              </motion.div>
+            </div>
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <p className="text-natural text-lg mb-6 leading-relaxed">
-            Save Farm was born from a dream to transform barren land into a thriving horticultural paradise. What began in 1970 as a passion project by the Save family soon blossomed into a lush orchard in Maharashtra’s Konkan region.
-          </p>
-
-          <p className="text-natural text-lg mb-6 leading-relaxed">
-            Decades of scientific farming and experimentation led to the birth of Save Nursery — now a trusted name in plant supply and green knowledge sharing. Our hands-on expertise continues to inspire farmers, students, and eco-tourists alike.
-          </p>
-
-          <p className="text-natural text-lg leading-relaxed">
-            In 2015, we introduced Tarpa, our agro-eco tourism initiative rooted in Warli culture and sustainable living. Today, Save Farm stands as a symbol of regeneration, offering rural stays that are both restorative and rooted in tradition.
-          </p>
-        </motion.div>
-      </div>
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
 
       {/* Logo Symbolism Section */}

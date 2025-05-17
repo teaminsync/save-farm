@@ -374,7 +374,16 @@ export default function ContactPage() {
                   <Phone className="h-6 w-6 text-fern mr-4 mt-1" />
                   <div>
                     <h3 className="text-lg font-medium text-fern mb-2">Phone</h3>
-                    <p className="text-natural">02528-241130</p>
+                    <p className="text-natural">
+                      <a
+                        href="https://wa.me/917020366302"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-fern"
+                      >
+                        +91 70203 66302
+                      </a>
+                    </p>
                     <p className="text-natural">
                       <a
                         href="https://wa.me/919921177335"

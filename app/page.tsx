@@ -126,14 +126,31 @@ export default function Home() {
             Reconnect with Nature
           </motion.h1>
 
+          {/* <motion.h1
+            className="text-4xl md:text-6xl font-serif text-fern mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            Reconnect with Nature
+          </motion.h1>
+
+          <motion.h1
+            className="text-4xl md:text-6xl font-serif text-natural mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            Reconnect with Nature
+          </motion.h1> */}
+
           <motion.p
             className="text-lg md:text-xl text-natural max-w-2xl mx-auto mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            Experience luxury and tranquility in the heart of nature at Save Farm, where modern comfort meets
-            sustainable living.
+            Experience serenity in the heart of nature at Save Farm, where modern comfort blends with sustainable living.
           </motion.p>
 
           <motion.div
@@ -361,8 +378,9 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-serif mb-6">Ready to Experience Save Farm?</h2>
             <p className="text-lg mb-8 opacity-90">
-              Book your stay now and discover the perfect balance of luxury and nature.
+              Book your stay now and discover the perfect balance of comfort and nature.
             </p>
+
             <Button asChild className="bg-warm-ivory text-fern hover:bg-warm-ivory/90">
               <Link href="/packages">
                 View Our Packages

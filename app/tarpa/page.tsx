@@ -80,7 +80,7 @@ export default function TarpaPage() {
       title: "Tribal Culture & Heritage",
       description:
         "Engage with the Warli community through storytelling, folk art, and dance performances that celebrate indigenous traditions and way of life.",
-      image: "/images/tarpa-cultural.jpg",
+      image: "/images/tarpa-cultural.png",
     },
     {
       title: "Sustainable Stay",
@@ -92,19 +92,19 @@ export default function TarpaPage() {
       title: "Guided Farm Walks",
       description:
         "Join our curated walks to explore organic farms, water harvesting systems, and native plant species while learning about rural sustainability.",
-      image: "/images/tarpa-nature-walks.jpg",
+      image: "/images/tarpa-nature-walks.jpeg",
     },
     {
       title: "Rural Activities & Handicrafts",
       description:
         "Try your hand at traditional activities like mat weaving, pottery, or bamboo craft in interactive sessions guided by local artisans.",
-      image: "/images/tarpa-workshops.jpg",
+      image: "/images/tarpa-workshops.jpeg",
     },
     {
       title: "Seasonal Meals from the Farm",
       description:
         "Enjoy freshly prepared meals using organic ingredients sourced directly from the farm, reflecting the seasonal bounty of the region.",
-      image: "/images/tarpa-cuisine.jpg",
+      image: "/images/tarpa-cuisine.jpeg",
     },
   ];
   

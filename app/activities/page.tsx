@@ -101,14 +101,14 @@ export default function ActivitiesPage() {
       { src: "/images/farm-tours-3.jpg", alt: "Farm animals interaction experience" },
     ],
     2: [
-      { src: "/images/adventure-arena-1.jpg", alt: "Exciting zipline adventure through the forest" },
-      { src: "/images/adventure-arena-2.jpg", alt: "Challenging rope course activities" },
-      { src: "/images/adventure-arena-3.jpg", alt: "Rock climbing wall for all skill levels" },
-    ],
-    3: [
       { src: "/images/rural-skills-1.jpg", alt: "Traditional pottery workshop in progress" },
       { src: "/images/rural-skills-2.jpg", alt: "Weaving demonstration with natural materials" },
       { src: "/images/rural-skills-3.jpg", alt: "Organic farming techniques being taught" },
+    ],
+    3: [
+      { src: "/images/adventure-arena-1.jpg", alt: "Exciting zipline adventure through the forest" },
+      { src: "/images/adventure-arena-2.jpg", alt: "Challenging rope course activities" },
+      { src: "/images/adventure-arena-3.jpg", alt: "Rock climbing wall for all skill levels" },
     ],
     4: [
       { src: "/images/souvenir-shop-1.jpg", alt: "Handcrafted local souvenirs on display" },

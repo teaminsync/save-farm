@@ -148,7 +148,6 @@ export default function AccommodationsPage() {
     }
   ];
 
-
   return (
     <LocomotiveLayout>
       {/* Hero Section */}
@@ -180,7 +179,7 @@ export default function AccommodationsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Luxury meets nature in our unique eco-friendly lodgings
+            Comfort meets nature in our unique eco-friendly lodgings
           </motion.p>
         </div>
       </section>
@@ -206,8 +205,8 @@ export default function AccommodationsPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              At Save Farm, we offer a range of unique accommodations that blend luxury with sustainability. Each of our
-              lodgings is designed to provide comfort while maintaining a deep connection to the natural surroundings.
+              At Save Farm, we offer a range of unique accommodations that blend comfort with sustainability. Each of our
+              lodgings is designed to provide a restful stay while maintaining a deep connection to the natural surroundings.
               From traditional farmer's quarters to elevated tree huts, our accommodations offer an authentic experience
               without sacrificing modern comforts.
             </motion.p>
