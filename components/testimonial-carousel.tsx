@@ -1,9 +1,9 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface Testimonial {
   name: string
@@ -25,20 +25,23 @@ export default function TestimonialCarousel({
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
 
-  useEffect(() => {
-    startAutoplay()
-    return () => autoplayRef.current && clearInterval(autoplayRef.current)
-  }, [])
-
-  const startAutoplay = () => {
-    autoplayRef.current && clearInterval(autoplayRef.current)
+  // Define startAutoplay as a useCallback to use in useEffect
+  const startAutoplay = useCallback(() => {
+    if (autoplayRef.current) clearInterval(autoplayRef.current)
     autoplayRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
     }, autoplaySpeed)
-  }
+  }, [autoplaySpeed, testimonials.length])
+
+  useEffect(() => {
+    startAutoplay()
+    return () => {
+      if (autoplayRef.current) clearInterval(autoplayRef.current)
+    }
+  }, [startAutoplay]) // Add startAutoplay to the dependency array
 
   const pauseAutoplay = () => {
-    autoplayRef.current && clearInterval(autoplayRef.current)
+    if (autoplayRef.current) clearInterval(autoplayRef.current)
     autoplayRef.current = null
   }
 
@@ -63,9 +66,10 @@ export default function TestimonialCarousel({
   const handleTouchMove = (e: React.TouchEvent) => {
     if (touchStartX.current !== 0) {
       const diff = touchStartX.current - e.touches[0].clientX
-      if (Math.abs(diff) > 10) e.preventDefault()
+      // Remove e.preventDefault() as it causes issues with passive event listeners
+      // Instead, we'll just track the position
+      touchEndX.current = e.touches[0].clientX
     }
-    touchEndX.current = e.touches[0].clientX
   }
 
   const handleTouchEnd = () => {
@@ -89,22 +93,21 @@ export default function TestimonialCarousel({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-<button
-  className="absolute -left-2 md:-left-8 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 md:p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
-  onClick={handlePrev}
-  aria-label="Previous testimonial"
->
-  <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
-</button>
+      <button
+        className="absolute -left-2 md:-left-8 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 md:p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
+        onClick={handlePrev}
+        aria-label="Previous testimonial"
+      >
+        <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
+      </button>
 
-<button
-  className="absolute -right-2 md:-right-8 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 md:p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
-  onClick={handleNext}
-  aria-label="Next testimonial"
->
-  <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
-</button>
-
+      <button
+        className="absolute -right-2 md:-right-8 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 md:p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
+        onClick={handleNext}
+        aria-label="Next testimonial"
+      >
+        <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
+      </button>
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
