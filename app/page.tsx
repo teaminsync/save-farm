@@ -7,13 +7,10 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ArrowRight } from "lucide-react"
-
 import LocomotiveLayout from "@/components/locomotive-layout"
 import { Button } from "@/components/ui/button"
 import AudioInteractionPrompt from "@/components/audio-interaction-prompt"
 import TestimonialCarousel from "@/components/testimonial-carousel"
-
-
 
 export default function Home() {
   const logoRef = useRef(null)
@@ -80,29 +77,28 @@ export default function Home() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9])
 
-const testimonials = [
-  {
-    name: "Priyanka Pimple",
-    text: "I had the pleasure of visiting Save Farm (Tarpa resort) that exceeded all of my expectations. From the moment I arrived, I was greeted with warm smiles and exceptional service that made my stay truly unforgettable.",
-    category: "Holiday ❘ Family",
-  },
-  {
-    name: "Gugush Irani",
-    text: "Save Farm is a peaceful retreat away from the city. The rooms are clean, the food is delicious, and the activities like pottery and farm tours are fun. The owners are warm and welcoming. A perfect place to relax with friends in nature's lap.",
-    category: "Holiday ❘ Friends",
-  },
-  {
-    name: "Sawan Patel",
-    text: "Our stay in the Machan Hut was wonderful. The verandah was our favorite spot. Cleanliness and amenities were spot on. We enjoyed the pottery activity and tractor tour. The food was simple but decent. Peaceful, green, and very close to Gholvad station. Will revisit!",
-    category: "Holiday ❘ Couple",
-  },
-  {
-    name: "Mangesh Borkar",
-    text: "Save Farm was perfect for our family trip. The pool was clean, the activities were engaging, and the tractor ride was a highlight. Food, ambience, and stay all scored full marks. A fun and peaceful experience we’d love to repeat with our children again.",
-    category: "Holiday ❘ Family",
-  },
-]
-
+  const testimonials = [
+    {
+      name: "Priyanka Pimple",
+      text: "I had the pleasure of visiting Save Farm (Tarpa resort) that exceeded all of my expectations. From the moment I arrived, I was greeted with warm smiles and exceptional service that made my stay truly unforgettable.",
+      category: "Holiday ❘ Family",
+    },
+    {
+      name: "Gugush Irani",
+      text: "Save Farm is a peaceful retreat away from the city. The rooms are clean, the food is delicious, and the activities like pottery and farm tours are fun. The owners are warm and welcoming. A perfect place to relax with friends in nature's lap.",
+      category: "Holiday ❘ Friends",
+    },
+    {
+      name: "Sawan Patel",
+      text: "Our stay in the Machan Hut was wonderful. The verandah was our favorite spot. Cleanliness and amenities were spot on. We enjoyed the pottery activity and tractor tour. The food was simple but decent. Peaceful, green, and very close to Gholvad station. Will revisit!",
+      category: "Holiday ❘ Couple",
+    },
+    {
+      name: "Mangesh Borkar",
+      text: "Save Farm was perfect for our family trip. The pool was clean, the activities were engaging, and the tractor ride was a highlight. Food, ambience, and stay all scored full marks. A fun and peaceful experience we’d love to repeat with our children again.",
+      category: "Holiday ❘ Family",
+    },
+  ]
 
   return (
     <LocomotiveLayout>
@@ -122,16 +118,6 @@ const testimonials = [
 
           <div className="absolute inset-0 bg-fern/20" />
         </motion.div>
-        {/* <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
-          <Image
-            src="/images/hero-background.jpg"
-            alt="Save Farm serene landscape"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-fern/20" />
-        </motion.div> */}
 
         <div className="container relative z-10 text-center px-4">
           <motion.div
@@ -198,7 +184,6 @@ const testimonials = [
                 <ArrowRight className="ml-2 h-6 w-6" />
               </Link>
             </Button> */}
-
           </motion.div>
         </div>
 
@@ -364,56 +349,24 @@ const testimonials = [
         </div>
       </section>
 
-      {/* Testimonial Section
-      <section className="py-20 bg-natural/10" data-scroll-section>
-        <div className="container px-4">
+      <section className="py-20 bg-natural/10 w-full" data-scroll-section>
+        <div className="w-full px-4 md:px-8">
           <motion.div
-            className="max-w-4xl mx-auto text-center"
+            className="mx-auto"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-fern mb-12">What Our Guests Say</h2>
-
-            <div className="relative">
-              <div className="text-5xl text-fern/20 absolute -top-8 left-0">"</div>
-              <p className="text-natural text-lg italic mb-6 leading-relaxed">
-                Save Farm was the perfect escape from city life. The Bamboo Hut was beautifully designed, and the farm
-                tour gave us a new appreciation for sustainable living. We'll definitely be back!
-              </p>
-              <div className="text-5xl text-fern/20 absolute -bottom-8 right-0">"</div>
-            </div>
-
-            <div className="mt-8">
-              <p className="text-fern font-medium">Virat Kohli</p>
-              <p className="text-natural text-sm">Mumbai, India</p>
+            <h2 className="text-3xl md:text-4xl font-serif text-fern mb-12 text-center">
+              What Our Guests Say
+            </h2>
+            <div className="min-h-[300px] md:min-h-[180px]">
+              <TestimonialCarousel testimonials={testimonials} />
             </div>
           </motion.div>
         </div>
-      </section> */}
-
-          <section className="py-20 bg-natural/10 w-full" data-scroll-section>
-  <div className="w-full px-4 md:px-8">
-    <motion.div
-      className="mx-auto"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-    >
-      <h2 className="text-3xl md:text-4xl font-serif text-fern mb-12 text-center">
-        What Our Guests Say
-      </h2>
-      <div className="min-h-[300px] md:min-h-[180px]">
-        <TestimonialCarousel testimonials={testimonials} />
-      </div>
-    </motion.div>
-  </div>
-</section>
-
-
-
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-fern text-warm-ivory" data-scroll-section>

@@ -75,12 +75,24 @@
   }
 
   /* Font classes */
-  h1, h2, h3, h4, h5, h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   .font-serif {
     font-family: var(--font-serif), serif;
   }
 
-  p, span, button, input, textarea, select, li, a,
+  p,
+  span,
+  button,
+  input,
+  textarea,
+  select,
+  li,
+  a,
   .font-sans {
     font-family: var(--font-sans), sans-serif;
   }

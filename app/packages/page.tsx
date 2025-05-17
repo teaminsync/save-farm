@@ -7,7 +7,6 @@ import { motion } from "framer-motion"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ArrowRight, Check } from "lucide-react"
-
 import LocomotiveLayout from "@/components/locomotive-layout"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -83,7 +82,6 @@ export default function PackagesPage() {
       priceGroup: "Extra person: ₹2,000 per night | 1 child (up to 8 yrs) free per room"
     }
   ]
-  
 
   return (
     <LocomotiveLayout>
@@ -211,96 +209,94 @@ export default function PackagesPage() {
 
       {/* Booking Info Section */}
       <section className="py-20 bg-warm-ivory" data-scroll-section>
-  <div className="container px-4">
-    <div className="max-w-4xl mx-auto">
-      <motion.h2
-        className="text-3xl md:text-4xl font-serif text-fern mb-8 text-center"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        Booking Guidelines
-      </motion.h2>
+        <div className="container px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              className="text-3xl md:text-4xl font-serif text-fern mb-8 text-center"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              Booking Guidelines
+            </motion.h2>
 
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-12"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        {/* Left Column - Booking Info */}
-        <div>
-          <h3 className="text-xl font-serif text-fern mb-4">How to Book</h3>
-          <p className="text-natural mb-6">
-            Booking your stay at Save Farm is simple. Contact us through our website, email, or phone to check
-            availability and confirm your reservation. We recommend booking at least two weeks in advance for weekend
-            stays.
-          </p>
-          <p className="text-natural mb-6">
-            A 50% advance payment is required to secure your slot. Balance payment can be made on arrival via UPI,
-            bank transfer, or cash.
-          </p>
-          <p className="text-natural">
-            For group bookings (10+ guests), please reach out to us directly for customized pricing and assistance.
-          </p>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-12"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Left Column - Booking Info */}
+              <div>
+                <h3 className="text-xl font-serif text-fern mb-4">How to Book</h3>
+                <p className="text-natural mb-6">
+                  Booking your stay at Save Farm is simple. Contact us through our website, email, or phone to check
+                  availability and confirm your reservation. We recommend booking at least two weeks in advance for weekend
+                  stays.
+                </p>
+                <p className="text-natural mb-6">
+                  A 50% advance payment is required to secure your slot. Balance payment can be made on arrival via UPI,
+                  bank transfer, or cash.
+                </p>
+                <p className="text-natural">
+                  For group bookings (10+ guests), please reach out to us directly for customized pricing and assistance.
+                </p>
+              </div>
+
+              {/* Right Column - Bullet List */}
+              <div>
+                <h3 className="text-xl font-serif text-fern mb-4">Policies & Essentials</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-baseline gap-3">
+                    <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
+                    <span className="text-natural leading-relaxed">
+                      Save Farm is a farmstay offering a rural experience — not a hotel or resort.
+                    </span>
+                  </li>
+                  <li className="flex items-baseline gap-3">
+                    <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
+                    <span className="text-natural leading-relaxed">
+                      Alcohol and loud music are strictly not allowed.
+                    </span>
+                  </li>
+                  <li className="flex items-baseline gap-3">
+                    <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
+                    <span className="text-natural leading-relaxed">
+                      Meal and activity timings are fixed. Dinner is served at 8:30 pm.
+                    </span>
+                  </li>
+                  <li className="flex items-baseline gap-3">
+                    <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
+                    <span className="text-natural leading-relaxed">
+                      Vegetarian meals are included. Non-vegetarian options are available at extra cost.
+                    </span>
+                  </li>
+                  <li className="flex items-baseline gap-3">
+                    <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
+                    <span className="text-natural leading-relaxed">
+                      All meals are home-cooked using seasonal and local ingredients.
+                    </span>
+                  </li>
+                  <li className="flex items-baseline gap-3">
+                    <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
+                    <span className="text-natural leading-relaxed">
+                      WiFi and cable may occasionally be unstable due to our rural location.
+                    </span>
+                  </li>
+                  <li className="flex items-baseline gap-3">
+                    <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
+                    <span className="text-natural leading-relaxed">
+                      All listed prices are inclusive of GST.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
         </div>
-
-        {/* Right Column - Bullet List */}
-        <div>
-          <h3 className="text-xl font-serif text-fern mb-4">Policies & Essentials</h3>
-          <ul className="space-y-2">
-            <li className="flex items-baseline gap-3">
-              <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
-              <span className="text-natural leading-relaxed">
-                Save Farm is a farmstay offering a rural experience — not a hotel or resort.
-              </span>
-            </li>
-            <li className="flex items-baseline gap-3">
-              <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
-              <span className="text-natural leading-relaxed">
-                Alcohol and loud music are strictly not allowed.
-              </span>
-            </li>
-            <li className="flex items-baseline gap-3">
-              <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
-              <span className="text-natural leading-relaxed">
-                Meal and activity timings are fixed. Dinner is served at 8:30 pm.
-              </span>
-            </li>
-            <li className="flex items-baseline gap-3">
-              <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
-              <span className="text-natural leading-relaxed">
-                Vegetarian meals are included. Non-vegetarian options are available at extra cost.
-              </span>
-            </li>
-            <li className="flex items-baseline gap-3">
-              <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
-              <span className="text-natural leading-relaxed">
-                All meals are home-cooked using seasonal and local ingredients.
-              </span>
-            </li>
-            <li className="flex items-baseline gap-3">
-              <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
-              <span className="text-natural leading-relaxed">
-                WiFi and cable may occasionally be unstable due to our rural location.
-              </span>
-            </li>
-            <li className="flex items-baseline gap-3">
-              <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
-              <span className="text-natural leading-relaxed">
-                All listed prices are inclusive of GST.
-              </span>
-            </li>
-          </ul>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-</section>
-
-
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-fern text-warm-ivory" data-scroll-section>

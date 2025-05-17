@@ -111,7 +111,6 @@ export default function TarpaPage() {
   return (
     <LocomotiveLayout>
       <main data-scroll-container>
-        <Header />
 
         {/* Hero Section */}
         <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
@@ -162,37 +161,35 @@ export default function TarpaPage() {
               </motion.h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
-             <motion.div
-  initial={{ opacity: 0, x: -50 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.8, delay: 0.2 }}
-  className="flex flex-col items-center"
->
-  <video
-    autoPlay
-    loop
-    muted
-    playsInline
-    className="w-[70%] max-w-[700px] h-auto rounded-xl shadow-lg"
-  >
-    <source src="/images/tarpa-video.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-  
-  {/* Instagram handle below the video */}
-  <a
-    href="https://instagram.com/savefarmofficial" // replace with actual handle URL
-    target="_blank"
-    rel="noopener noreferrer"
-    className="mt-4 flex items-center text-fern hover:text-fern/80 font-medium space-x-2"
-  >
-    <Instagram className="w-5 h-5" />
-    <span>savefarmofficial</span>
-  </a>
-</motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="flex flex-col items-center"
+                >
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-[70%] max-w-[700px] h-auto rounded-xl shadow-lg"
+                  >
+                    <source src="/images/tarpa-video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
 
-
+                  {/* Instagram handle below the video */}
+                  <a
+                    href="https://instagram.com/savefarmofficial" // replace with actual handle URL
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 flex items-center text-fern hover:text-fern/80 font-medium space-x-2"
+                  >
+                    <Instagram className="w-5 h-5" />
+                    <span>savefarmofficial</span>
+                  </a>
+                </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
@@ -212,7 +209,6 @@ export default function TarpaPage() {
                     Tarpa invites travelers to reconnect with the land, slow down, and experience a farmstay that is grounded in tradition yet elevated with eco-conscious design and farm-fresh hospitality.
                   </p>
                 </motion.div>
-
               </div>
             </div>
           </div>

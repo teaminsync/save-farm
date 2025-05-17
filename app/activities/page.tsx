@@ -12,8 +12,25 @@ import LocomotiveLayout from "@/components/locomotive-layout"
 import { Button } from "@/components/ui/button"
 import ImageGallery from "@/components/image-gallery"
 
+interface Activity {
+  id: number
+  name: string
+  description: string
+  image: string
+  highlights: string[]
+}
+
+interface GalleryImage {
+  src: string
+  alt: string
+}
+
+interface ActivityGalleries {
+  [key: number]: GalleryImage[]
+}
+
 export default function ActivitiesPage() {
-  const introRef = useRef(null)
+  const introRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
@@ -36,7 +53,7 @@ export default function ActivitiesPage() {
     )
   }, [])
 
-  const activities = [
+  const activities: Activity[] = [
     {
       id: 1,
       name: "Farm Tour",
@@ -91,10 +108,9 @@ export default function ActivitiesPage() {
         "Canvas panels with traditional designs",
       ],
     },
-  ];
+  ]
 
-
-  const activityGalleries = {
+  const activityGalleries: ActivityGalleries = {
     1: [
       { src: "/images/farm-tours-1.jpg", alt: "Guided tour of organic farming practices" },
       { src: "/images/farm-tours-2.jpg", alt: "Visitors learning about sustainable agriculture" },
@@ -122,13 +138,7 @@ export default function ActivitiesPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/activities-hero.jpg"
-            alt="Save Farm activities"
-            fill
-            className="object-cover"
-            priority
-          />
+          <Image src="/images/activities-hero.jpg" alt="Save Farm activities" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-fern/30" />
         </div>
 
@@ -174,7 +184,10 @@ export default function ActivitiesPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              At Save Farm, we believe that the best way to reconnect with nature is through hands-on experiences. Our carefully curated activities allow you to engage with the natural world, learn traditional skills, and create lasting memories. Whether you're seeking adventure, knowledge, or simply a peaceful day on the farm, we have something for everyone.
+              At Save Farm, we believe that the best way to reconnect with nature is through hands-on experiences. Our
+              carefully curated activities allow you to engage with the natural world, learn traditional skills, and
+              create lasting memories. Whether you're seeking adventure, knowledge, or simply a peaceful day on the
+              farm, we have something for everyone.
             </motion.p>
           </div>
         </div>
@@ -202,9 +215,9 @@ export default function ActivitiesPage() {
               <div className="p-8">
                 <h2 className="text-2xl font-serif text-fern mb-4">Our Highlight Experience – Tarpa</h2>
                 <p className="text-natural mb-6">
-                  Inspired by the tribal instrument, Tarpa brings together sustainable agriculture, Warli culture, and rural
-                  living. It reflects the harmony of people, nature, and tradition—offering guests a deeply immersive farmstay
-                  rooted in authenticity and eco-tourism.
+                  Inspired by the tribal instrument, Tarpa brings together sustainable agriculture, Warli culture, and
+                  rural living. It reflects the harmony of people, nature, and tradition—offering guests a deeply
+                  immersive farmstay rooted in authenticity and eco-tourism.
                 </p>
                 <Button asChild variant="outline" className="border-fern text-fern hover:bg-fern/10">
                   <Link href="/tarpa">

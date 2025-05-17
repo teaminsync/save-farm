@@ -42,11 +42,11 @@ export default function RootLayout({
         className={`${montserrat.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <AudioProvider>
-          {children}
-          <FloatingContactButton />
-          <AudioControlButton />
-          <Toaster />
-        </AudioProvider>  
+            {children}
+            <FloatingContactButton />
+            <AudioControlButton />
+            <Toaster />
+          </AudioProvider>
         </ThemeProvider>
       </body>
     </html>

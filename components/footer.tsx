@@ -1,4 +1,6 @@
-'use client'
+"use client"
+
+import type React from "react"
 
 import Link from "next/link"
 import Image from "next/image"
@@ -8,8 +10,9 @@ import { useState } from "react"
 
 export default function Footer() {
   const [email, setEmail] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubscribe = async (e) => {
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!/\S+@\S+\.\S+/.test(email)) {
@@ -17,10 +20,11 @@ export default function Footer() {
       return
     }
 
+    setIsSubmitting(true)
+
     try {
       const res = await fetch("/api/newsletter", {
         method: "POST",
-
         headers: {
           "Content-Type": "application/json",
         },
@@ -38,6 +42,8 @@ export default function Footer() {
     } catch (err) {
       console.error(err)
       alert("Error connecting to server. Please try again later.")
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -53,9 +59,19 @@ export default function Footer() {
               </div>
               <span className="ml-2 font-serif text-xl">
                 S
-                <span style={{ position: 'relative', display: 'inline-block', letterSpacing: '-0.15em' }}>
+                <span style={{ position: "relative", display: "inline-block", letterSpacing: "-0.15em" }}>
                   <span className="font-serif">A</span>
-                  <span style={{ position: 'absolute', top: '-0.0em', left: '-0.05em', fontSize: '1.5em', fontWeight: 'lighter', }}>ˉ</span>
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "-0.0em",
+                      left: "-0.05em",
+                      fontSize: "1.5em",
+                      fontWeight: "lighter",
+                    }}
+                  >
+                    ˉ
+                  </span>
                 </span>
                 VÉ FARMS
               </span>
@@ -66,25 +82,41 @@ export default function Footer() {
 
             <div className="flex space-x-4">
               <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="https://www.facebook.com/@SaveFarmOfficial" target="_blank" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
+                <Link
+                  href="https://www.facebook.com/@SaveFarmOfficial"
+                  target="_blank"
+                  className="text-warm-ivory hover:text-warm-ivory/70 transition-colors"
+                >
                   <Facebook className="h-5 w-5" />
                   <span className="sr-only">Facebook</span>
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="https://www.instagram.com/savefarmofficial/" target="_blank" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
+                <Link
+                  href="https://www.instagram.com/savefarmofficial/"
+                  target="_blank"
+                  className="text-warm-ivory hover:text-warm-ivory/70 transition-colors"
+                >
                   <Instagram className="h-5 w-5" />
                   <span className="sr-only">Instagram</span>
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="https://wa.me/919921177335" target="_blank" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
+                <Link
+                  href="https://wa.me/919921177335"
+                  target="_blank"
+                  className="text-warm-ivory hover:text-warm-ivory/70 transition-colors"
+                >
                   <Phone className="h-5 w-5" />
                   <span className="sr-only">WhatsApp</span>
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="https://www.youtube.com/@SaveFarmGholvad" target="_blank" className="text-warm-ivory hover:text-warm-ivory/70 transition-colors">
+                <Link
+                  href="https://www.youtube.com/@SaveFarmGholvad"
+                  target="_blank"
+                  className="text-warm-ivory hover:text-warm-ivory/70 transition-colors"
+                >
                   <Youtube className="h-5 w-5" />
                   <span className="sr-only">YouTube</span>
                 </Link>
@@ -117,7 +149,10 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/accommodations" className="text-warm-ivory/80 hover:text-warm-ivory transition-colors text-sm">
+                <Link
+                  href="/accommodations"
+                  className="text-warm-ivory/80 hover:text-warm-ivory transition-colors text-sm"
+                >
                   Accommodations
                 </Link>
               </li>
@@ -158,10 +193,7 @@ export default function Footer() {
               </p>
               <p className="text-warm-ivory/80 text-sm">
                 Email:{" "}
-                <a
-                  href="mailto:aditya@savefarm.in"
-                  className="hover:text-warm-ivory"
-                >
+                <a href="mailto:aditya@savefarm.in" className="hover:text-warm-ivory">
                   aditya@savefarm.in
                 </a>
               </p>
@@ -178,15 +210,16 @@ export default function Footer() {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                 placeholder="Your email"
                 className="px-3 py-2 text-sm bg-warm-ivory/10 border border-warm-ivory/20 rounded-l-md focus:outline-none focus:ring-1 focus:ring-warm-ivory/50 text-warm-ivory placeholder:text-warm-ivory/50 w-full"
               />
               <button
                 type="submit"
                 className="bg-warm-ivory text-fern px-3 py-2 rounded-r-md text-sm font-medium hover:bg-warm-ivory/90 transition-colors"
+                disabled={isSubmitting}
               >
-                Subscribe
+                {isSubmitting ? "..." : "Subscribe"}
               </button>
             </form>
           </div>
