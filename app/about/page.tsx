@@ -187,7 +187,7 @@ export default function AboutPage() {
               >
                 <div className="relative h-80 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/farm-history.jpeg"
+                    src="/images/farm-history.JPEG"
                     alt="Save Farm in its early days"
                     fill
                     className="object-cover"
