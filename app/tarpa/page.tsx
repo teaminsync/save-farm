@@ -92,19 +92,19 @@ export default function TarpaPage() {
       title: "Guided Farm Walks",
       description:
         "Join our curated walks to explore organic farms, water harvesting systems, and native plant species while learning about rural sustainability.",
-      image: "/images/tarpa-nature-walks.jpeg",
+      image: "/images/tarpa-nature-walks.JPEG",
     },
     {
       title: "Rural Activities & Handicrafts",
       description:
         "Try your hand at traditional activities like mat weaving, pottery, or bamboo craft in interactive sessions guided by local artisans.",
-      image: "/images/tarpa-workshops.jpeg",
+      image: "/images/tarpa-workshops.JPEG",
     },
     {
       title: "Seasonal Meals from the Farm",
       description:
         "Enjoy freshly prepared meals using organic ingredients sourced directly from the farm, reflecting the seasonal bounty of the region.",
-      image: "/images/tarpa-cuisine.jpeg",
+      image: "/images/tarpa-cuisine.JPEG",
     },
   ];
   

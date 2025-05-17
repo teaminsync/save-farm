@@ -101,7 +101,7 @@ export default function ActivitiesPage() {
       { src: "/images/farm-tours-3.jpg", alt: "Farm animals interaction experience" },
     ],
     2: [
-      { src: "/images/rural-skills-1.jpg", alt: "Traditional pottery workshop in progress" },
+      { src: "/images/rural-skills-1.JPG", alt: "Traditional pottery workshop in progress" },
       { src: "/images/rural-skills-2.jpg", alt: "Weaving demonstration with natural materials" },
       { src: "/images/rural-skills-3.jpg", alt: "Organic farming techniques being taught" },
     ],
