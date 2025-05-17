@@ -7,6 +7,7 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import LocomotiveLayout from "@/components/locomotive-layout"
+import FAQSection from "@/components/faq-section"
 
 export default function AboutPage() {
   const missionRef = useRef(null)
@@ -85,6 +86,168 @@ export default function AboutPage() {
       },
     )
   }, [])
+
+ const faqCategories = [
+  {
+    title: "About Save Farm",
+    faqs: [
+      {
+        question: "Where exactly is Save Farm located?",
+        answer:
+          "We are 2 km from Gholvad Railway Station, 10 km from Dahanu Rd Railway Station and about 130 km (≈ 2 hrs 30 min) north of Mumbai via NH‑48. A detailed route map and GPS pin are sent with every confirmed booking.",
+      },
+      {
+        question: "What makes Save Farm different from a typical resort?",
+        answer:
+          "We’re a 30-acre working chikoo orchard and agro‑tourism unit registered with the Directorate of Tourism, Maharashtra. Guests live amid real farm operations, interact with farm activities, and experience authentic rural life—yet sleep in clean, well‑appointed cottages.",
+      },
+      {
+        question: "Is Save Farm suitable for families with young children?",
+        answer:
+          "Absolutely. Wide open spaces, play zones, animal feeding, and supervised farm activities keep little ones happily engaged.",
+      },
+    ],
+  },
+  {
+    title: "Accommodation & Amenities",
+    faqs: [
+      {
+        question: "What accommodation categories do you offer?",
+        answer:
+          "We offer two accommodation categories, distinguished only by capacity while the amenities across all the rooms remain the same:\n\n• Couple rooms: Suitable for 2 guests.\n\n• Family rooms: Suitable for 4 guests.\n\nEach room can accommodate 1 extra person, with either a mattress or a single bed if already available in the room. The charges for an extra person can be enquired while booking.",
+      },
+      {
+        question: "Do you have air‑conditioned rooms?",
+        answer: "Yes—all the rooms are air conditioned.",
+      },
+      {
+        question: "Is Wi‑Fi available?",
+        answer:
+          "Complimentary high‑speed Wi‑Fi covers all cottages and common areas. A QR code for instant connection is displayed inside every room. However, given our remote location, there may occasionally be downtime in internet and cable TV connections. We appreciate your understanding and assure you of prompt assistance to restore services whenever needed.",
+      },
+      {
+        question: "What are your check‑in / check‑out times?",
+        answer:
+          "Check‑in: 1 pm to Check‑out: 11 am next day. Early check‑in / late check‑out depend on availability and may attract half‑day charges.",
+      },
+    ],
+  },
+  {
+    title: "Dining",
+    faqs: [
+      {
+        question: "What kind of food do you serve?",
+        answer:
+          "Homecooked local Maharashtrian cuisine is prepared in our farm kitchen.",
+      },
+      {
+        question: "Are all meals vegetarian?",
+        answer:
+          "Our standard packages include wholesome vegetarian fare. Non‑vegetarian dishes (chicken, fresh coastal or farm grown fish, or eggs) are available on prior request at an extra cost.",
+      },
+      {
+        question: "Meal timings (fixed)",
+        answer:
+          "• Bed‑tea: 7 – 8 am\n• Breakfast: 9 – 10:30 am\n• Lunch: 1:30 – 3 pm\n• High‑tea / Snacks: 5 – 6 pm\n• Dinner: 8:30 pm (We encourage guests to arrive at this time to enjoy freshly prepared hot meals.)",
+      },
+      {
+        question: "Can you cater to special diets?",
+        answer:
+          "We offer Jain, and low‑spice options, prepared in local cusine, with 24‑hour advance notice prior to check‑in. Any other prepartions are subject to feasibility.",
+      },
+    ],
+  },
+  {
+    title: "Activities & Timetables",
+    faqs: [
+      {
+        question: "What farm activities are included?",
+        answer:
+          "• Guided orchard tour \n• Seasonal fruit-picking\n• Vermicompost pit tour \n• Pottery \n• Warli art \n• Basket weaving \n• Soft adventure activities\n\nPlease note that some activities are subject to weather conditions, and not all the activities mentioned above may be included in your package. Kindly confirm which activities are included in your package at the time of booking.",
+      },
+      {
+        question: "Is day‑entry possible?",
+        answer:
+          "Yes, 10 am – 5 pm with pre‑booking. Packages bundle lunch, high‑tea, and farm tour.",
+      },
+    ],
+  },
+  {
+    title: "House Rules & Policies",
+    faqs: [
+      {
+        question: "Alcohol policy",
+        answer:
+          "Strictly **no alcohol** and **no narcotics** on the premises. We aim to maintain a serene, family‑friendly atmosphere and comply with rural licensing laws.",
+      },
+      {
+        question: "Noise policy",
+        answer:
+          "No loud music, DJs, or amplified speakers allowed on the property. Natural ambience and bird calls are part of the Save Farm experience. It helps us preserve it.",
+      },
+      {
+        question: "Pet policy",
+        answer: "Pets are not allowed.",
+      },
+      {
+        question: "Smoking",
+        answer:
+          "Strictly prohibited inside rooms or the common dining hall.",
+      },
+    ],
+  },
+  {
+    title: "Booking & Payments",
+    faqs: [
+      {
+        question: "How do I confirm a stay?",
+        answer:
+          "50 % advance via UPI or net‑banking secures your dates. Balance due at check‑in.",
+      },
+      {
+        question: "Cancellation terms",
+        answer:
+          "• Free reschedule or full refund up to 14 days before check‑in.\n• 50 % of the booking amount is refund 7–13 days prior.\n• No refund within 7 days.",
+      },
+      {
+        question: "Do you accept corporate or group bookings?",
+        answer:
+          "Yes—weddings, retreats, and school excursions welcome. Tailored itineraries and bulk pricing are available on request.",
+      },
+    ],
+  },
+  {
+    title: "Travel & Logistics",
+    faqs: [
+      {
+        question: "Nearest railway station / airport?",
+        answer:
+          "Rail: Gholvad and Dahanu Rd. (WR local + long‑distance). Air: Mumbai (BOM) or Surat (STV) airports—both within 3 hrs by road.",
+      },
+      {
+        question: "Parking?",
+        answer:
+          "Free on‑site parking for up to 15 cars; buses need prior intimation.",
+      },
+      {
+        question: "Pick‑up service?",
+        answer:
+          "While we do not offer a pick-up service, we can arrange rickshaws for local sightseeing and provide contact numbers for tourist vehicles for long-distance travel.",
+      },
+    ],
+  },
+  {
+    title: "Health & Safety",
+    faqs: [
+      {
+        question: "Medical facilities nearby?",
+        answer:
+          "A 24 × 7 Govt. Primary Health Center is 4 km away; a multispeciality hospital is located in Dahanu (20 km). Basic first‑aid is available on‑site.",
+      },
+    ],
+  },
+];
+
 
   return (
     <LocomotiveLayout>
@@ -341,6 +504,11 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <section className="bg-warm-ivory" data-scroll-section>
+  <FAQSection categories={faqCategories} />
+</section>
+
     </LocomotiveLayout>
   )
 }

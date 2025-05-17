@@ -1,10 +1,8 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
+import NextImage from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface ImageGalleryProps {
@@ -17,9 +15,43 @@ interface ImageGalleryProps {
 
 export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
+  const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({})
   const autoplayRef = useRef<NodeJS.Timeout | null>(null)
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
+
+  // Preload images
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = images.map((image) => {
+        return new Promise<void>((resolve) => {
+          if (!image.src || image.src.trim() === "") {
+            resolve()
+            return
+          }
+
+          const img = new window.Image()
+          img.src = image.src
+          img.crossOrigin = "anonymous"
+          img.onload = () => {
+            setImagesLoaded((prev) => ({
+              ...prev,
+              [image.src]: true,
+            }))
+            resolve()
+          }
+          img.onerror = () => {
+            resolve()
+          }
+        })
+      })
+
+      await Promise.all(imagePromises)
+    }
+
+    preloadImages()
+  }, [images])
 
   useEffect(() => {
     // Start autoplay
@@ -39,7 +71,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     }
 
     autoplayRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
+      goToNextSlide()
     }, autoplaySpeed)
   }
 
@@ -56,6 +88,10 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     }
   }
 
+  const goToNextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
+  }
+
   const handlePrev = () => {
     pauseAutoplay()
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)
@@ -63,7 +99,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
 
   const handleNext = () => {
     pauseAutoplay()
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
+    goToNextSlide()
   }
 
   // Touch handlers for mobile swipe
@@ -72,10 +108,26 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
+    // If we've started a horizontal swipe, prevent default to avoid page scrolling
+    if (touchStartX.current !== 0) {
+      const currentX = e.touches[0].clientX
+      const diff = touchStartX.current - currentX
+
+      // If horizontal movement is significant, prevent default
+      if (Math.abs(diff) > 10) {
+        e.preventDefault()
+      }
+    }
+
     touchEndX.current = e.touches[0].clientX
   }
 
   const handleTouchEnd = () => {
+    // Only process if we have both start and end values
+    if (touchStartX.current === 0 || touchEndX.current === 0) {
+      return
+    }
+
     const diff = touchStartX.current - touchEndX.current
 
     // If the difference is significant enough to be considered a swipe
@@ -88,6 +140,15 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
         handlePrev()
       }
     }
+
+    // Reset touch values after processing
+    touchStartX.current = 0
+    touchEndX.current = 0
+  }
+
+  const handleTouchCancel = () => {
+    touchStartX.current = 0
+    touchEndX.current = 0
   }
 
   // Ensure we have valid images to display
@@ -113,30 +174,34 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchCancel}
       >
-        <div className="relative h-80 w-full">
-          <AnimatePresence initial={false} mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 cursor-default"
-            >
-              <Image
-                src={imageSrc || "/placeholder.svg"}
-                alt={currentImage?.alt || "Gallery image"}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </AnimatePresence>
+        <div className="relative h-[320px] md:h-80 w-full">
+          {/* Display all images but only show the current one */}
+          {images.map((image, index) => {
+            const src = image?.src && image.src.trim() !== "" ? image.src : placeholderImage
+            return (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-300 ${
+                  index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
+              >
+                <NextImage
+                  src={src || "/placeholder.svg"}
+                  alt={image?.alt || "Gallery image"}
+                  fill
+                  className="object-cover"
+                  priority={index === currentIndex || index === (currentIndex + 1) % images.length}
+                />
+              </div>
+            )
+          })}
         </div>
 
         {/* Navigation arrows */}
         <button
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 rounded-full opacity-70 hover:opacity-100 transition-opacity z-20"
           onClick={(e) => {
             e.stopPropagation()
             handlePrev()
@@ -147,7 +212,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
         </button>
 
         <button
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 rounded-full opacity-70 hover:opacity-100 transition-opacity z-20"
           onClick={(e) => {
             e.stopPropagation()
             handleNext()
@@ -158,7 +223,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
         </button>
 
         {/* Dots indicator */}
-        <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-10">
+        <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
           {images.map((_, index) => (
             <button
               key={index}

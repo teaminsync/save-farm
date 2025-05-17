@@ -11,6 +11,9 @@ import { ArrowRight } from "lucide-react"
 import LocomotiveLayout from "@/components/locomotive-layout"
 import { Button } from "@/components/ui/button"
 import AudioInteractionPrompt from "@/components/audio-interaction-prompt"
+import TestimonialCarousel from "@/components/testimonial-carousel"
+
+
 
 export default function Home() {
   const logoRef = useRef(null)
@@ -76,6 +79,30 @@ export default function Home() {
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9])
+
+const testimonials = [
+  {
+    name: "Priyanka Pimple",
+    text: "I had the pleasure of visiting Save Farm (Tarpa resort) that exceeded all of my expectations. From the moment I arrived, I was greeted with warm smiles and exceptional service that made my stay truly unforgettable.",
+    category: "Holiday ❘ Family",
+  },
+  {
+    name: "Gugush Irani",
+    text: "Save Farm is a peaceful retreat away from the city. The rooms are clean, the food is delicious, and the activities like pottery and farm tours are fun. The owners are warm and welcoming. A perfect place to relax with friends in nature's lap.",
+    category: "Holiday ❘ Friends",
+  },
+  {
+    name: "Sawan Patel",
+    text: "Our stay in the Machan Hut was wonderful. The verandah was our favorite spot. Cleanliness and amenities were spot on. We enjoyed the pottery activity and tractor tour. The food was simple but decent. Peaceful, green, and very close to Gholvad station. Will revisit!",
+    category: "Holiday ❘ Couple",
+  },
+  {
+    name: "Mangesh Borkar",
+    text: "Save Farm was perfect for our family trip. The pool was clean, the activities were engaging, and the tractor ride was a highlight. Food, ambience, and stay all scored full marks. A fun and peaceful experience we’d love to repeat with our children again.",
+    category: "Holiday ❘ Family",
+  },
+]
+
 
   return (
     <LocomotiveLayout>
@@ -337,7 +364,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonial Section */}
+      {/* Testimonial Section
       <section className="py-20 bg-natural/10" data-scroll-section>
         <div className="container px-4">
           <motion.div
@@ -364,7 +391,26 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
+
+          <section className="py-20 bg-natural/10 w-full" data-scroll-section>
+  <div className="w-full px-4 md:px-8">
+    <motion.div
+      className="mx-auto"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <h2 className="text-3xl md:text-4xl font-serif text-fern mb-12 text-center">
+        What Our Guests Say
+      </h2>
+      <TestimonialCarousel testimonials={testimonials} />
+    </motion.div>
+  </div>
+</section>
+
+
 
       {/* CTA Section */}
       <section className="py-20 bg-fern text-warm-ivory" data-scroll-section>
