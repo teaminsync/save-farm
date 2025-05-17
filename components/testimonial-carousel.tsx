@@ -82,28 +82,27 @@ export default function TestimonialCarousel({
 
   return (
     <div
-      className="relative max-w-5xl mx-auto px-8 md:px-12"
+      className="relative max-w-5xl mx-auto px-4 md:px-8"
       onMouseEnter={pauseAutoplay}
       onMouseLeave={resumeAutoplay}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Arrows spaced outward */}
       <button
-        className="absolute -left-8 md:-left-12 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
+        className="absolute -left-4 md:-left-8 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 md:p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
         onClick={handlePrev}
         aria-label="Previous testimonial"
       >
-        <ChevronLeft className="h-5 w-5" />
+        <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
       </button>
 
       <button
-        className="absolute -right-8 md:-right-12 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
+        className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 md:p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
         onClick={handleNext}
         aria-label="Next testimonial"
       >
-        <ChevronRight className="h-5 w-5" />
+        <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
       </button>
 
       <AnimatePresence mode="wait" initial={false}>
@@ -115,15 +114,17 @@ export default function TestimonialCarousel({
           transition={{ duration: 0.3 }}
           className="text-center"
         >
-          <div className="relative px-6 md:px-12">
-            <div className="text-5xl text-fern/20 absolute -top-8 left-0">"</div>
-            <p className="text-natural text-lg italic mb-6 leading-relaxed">{currentTestimonial.text}</p>
-            <div className="text-5xl text-fern/20 absolute -bottom-8 right-0">"</div>
+          <div className="relative px-4 md:px-12">
+            <div className="text-3xl md:text-5xl text-fern/20 absolute -top-6 md:-top-8 left-0">"</div>
+            <p className="text-natural text-base md:text-lg italic mb-4 md:mb-6 leading-relaxed">
+              {currentTestimonial.text}
+            </p>
+            <div className="text-3xl md:text-5xl text-fern/20 absolute -bottom-6 md:-bottom-8 right-0">"</div>
           </div>
 
-          <div className="mt-8">
-            <p className="text-fern font-medium">{currentTestimonial.name}</p>
-            <p className="text-fern/80 text-sm mb-2">{currentTestimonial.category}</p>
+          <div className="mt-6 md:mt-8">
+            <p className="text-fern text-sm md:text-base font-medium">{currentTestimonial.name}</p>
+            <p className="text-fern/80 text-xs md:text-sm">{currentTestimonial.category}</p>
           </div>
         </motion.div>
       </AnimatePresence>
