@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-
+import { toast } from "@/hooks/use-toast"
 import Link from "next/link"
 import Image from "next/image"
 import { Facebook, Instagram, Youtube, Phone } from "lucide-react"
@@ -16,7 +16,12 @@ export default function Footer() {
     e.preventDefault()
 
     if (!/\S+@\S+\.\S+/.test(email)) {
-      alert("Please enter a valid email address.")
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+        duration: 3000, // 3 seconds for newsletter
+      })
       return
     }
 
@@ -34,14 +39,29 @@ export default function Footer() {
       const result = await res.json()
 
       if (result.result === "success") {
-        alert("Subscribed successfully!")
+        toast({
+          title: "Subscribed Successfully",
+          description: "Thank you for subscribing to our newsletter!",
+          variant: "success",
+          duration: 3000, // 3 seconds for newsletter
+        })
         setEmail("")
       } else {
-        alert("Subscription failed. Please try again.")
+        toast({
+          title: "Subscription Failed",
+          description: "Please try again later.",
+          variant: "destructive",
+          duration: 3000, // 3 seconds for newsletter
+        })
       }
     } catch (err) {
       console.error(err)
-      alert("Error connecting to server. Please try again later.")
+      toast({
+        title: "Connection Error",
+        description: "Error connecting to server. Please try again later.",
+        variant: "destructive",
+        duration: 3000, // 3 seconds for newsletter
+      })
     } finally {
       setIsSubmitting(false)
     }

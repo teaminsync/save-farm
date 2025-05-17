@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { useToast } from "@/components/ui/use-toast"
+import { toast } from "@/hooks/use-toast"
 
 // Define types for form data and errors
 interface FormData {
@@ -33,7 +33,6 @@ interface FormErrors {
 
 export default function ContactPage() {
   const formRef = useRef<HTMLDivElement>(null)
-  const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const [formData, setFormData] = useState<FormData>({
@@ -140,8 +139,10 @@ export default function ContactPage() {
 
       if (result.result === "success") {
         toast({
-          title: "Message Sent",
+          title: "Message Sent Successfully",
           description: "Thank you for contacting Save Farm. We'll get back to you soon!",
+          variant: "success",
+          duration: 4000, // 4 seconds for contact form
         })
 
         setFormData({
@@ -158,6 +159,7 @@ export default function ContactPage() {
           title: "Something went wrong",
           description: "Please try again or contact us directly.",
           variant: "destructive",
+          duration: 4000, // 4 seconds for contact form
         })
       }
     } catch (error) {
@@ -166,6 +168,7 @@ export default function ContactPage() {
         title: "Error",
         description: "Unable to submit form. Please check your internet connection.",
         variant: "destructive",
+        duration: 4000, // 4 seconds for contact form
       })
     } finally {
       setIsSubmitting(false)
