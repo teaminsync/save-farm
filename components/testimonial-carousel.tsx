@@ -89,21 +89,22 @@ export default function TestimonialCarousel({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <button
-        className="absolute -left-4 md:-left-8 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 md:p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
-        onClick={handlePrev}
-        aria-label="Previous testimonial"
-      >
-        <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
-      </button>
+<button
+  className="absolute -left-2 md:-left-8 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 md:p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
+  onClick={handlePrev}
+  aria-label="Previous testimonial"
+>
+  <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
+</button>
 
-      <button
-        className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 md:p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
-        onClick={handleNext}
-        aria-label="Next testimonial"
-      >
-        <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
-      </button>
+<button
+  className="absolute -right-2 md:-right-8 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 md:p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-10"
+  onClick={handleNext}
+  aria-label="Next testimonial"
+>
+  <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
+</button>
+
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
