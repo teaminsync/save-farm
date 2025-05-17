@@ -178,7 +178,7 @@ export default function AboutPage() {
       {
         question: "Alcohol policy",
         answer:
-          "Strictly **no alcohol** and **no narcotics** on the premises. We aim to maintain a serene, family‑friendly atmosphere and comply with rural licensing laws.",
+          "Strictly no alcohol and no narcotics on the premises. We aim to maintain a serene, family‑friendly atmosphere and comply with rural licensing laws.",
       },
       {
         question: "Noise policy",

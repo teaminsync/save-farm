@@ -14,10 +14,10 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "Save Farm | Luxury Farm Retreat",
+  title: "Save Farm",
   description:
-    "Experience luxury and tranquility in the heart of nature at Save Farm, where modern comfort meets sustainable living.",
-  generator: 'v0.dev'
+    "Experience serenity in the heart of nature at Save Farm, where modern comfort blends with sustainable living.",
+  generator: 'InSync Solutions'
 }
 
 export default function RootLayout({
