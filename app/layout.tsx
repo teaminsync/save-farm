@@ -1,12 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Montserrat, Playfair_Display } from "next/font/google"
+import { Montserrat, Playfair_Display } from 'next/font/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import FloatingContactButton from "@/components/floating-contact-button"
 import AudioControlButton from "@/components/audio-control-button"
 import { AudioProvider } from "@/context/audio-context"
+import CustomCursor from "@/components/custom-cursor"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -45,6 +46,7 @@ export default function RootLayout({
             {children}
             <FloatingContactButton />
             <AudioControlButton />
+            <CustomCursor />
             <Toaster />
           </AudioProvider>
         </ThemeProvider>
@@ -52,5 +54,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-import './globals.css'

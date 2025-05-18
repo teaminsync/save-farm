@@ -68,6 +68,7 @@
 
   * {
     @apply border-border;
+    cursor: none !important;
   }
 
   body {
@@ -156,7 +157,6 @@ html.has-scroll-dragging {
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-
 [data-scroll-direction="horizontal"] [data-scroll-container] {
   height: 100vh;
   display: inline-block;
@@ -168,4 +168,36 @@ html.has-scroll-dragging {
   vertical-align: top;
   white-space: nowrap;
   height: 100%;
+}
+
+/* Custom cursor styles */
+html,
+body {
+  cursor: none;
+}
+
+a,
+button,
+[role="button"],
+input,
+select,
+textarea {
+  cursor: none;
+}
+
+/* Leaf animation */
+@keyframes leaf-sway {
+  0% {
+    transform: rotate(-5deg) scale(1);
+  }
+  50% {
+    transform: rotate(5deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(-5deg) scale(1);
+  }
+}
+
+.animate-leaf-sway {
+  animation: leaf-sway 3s ease-in-out infinite;
 }
