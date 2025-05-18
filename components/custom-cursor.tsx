@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
 import { Leaf } from "lucide-react"
 
 export default function CustomCursor() {
@@ -24,10 +24,7 @@ export default function CustomCursor() {
       return
     }
 
-    // Add cursor:none to the body to hide the default cursor
-    document.body.style.cursor = "none"
-
-    const updateCursorPosition = (e: MouseEvent) => {
+    const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY })
       if (!isVisible) setIsVisible(true)
     }
@@ -40,26 +37,14 @@ export default function CustomCursor() {
       setIsVisible(true)
     }
 
-    window.addEventListener("mousemove", updateCursorPosition)
+    window.addEventListener("mousemove", updatePosition)
     document.addEventListener("mouseleave", handleMouseLeave)
     document.addEventListener("mouseenter", handleMouseEnter)
 
-    // Add cursor:none to all clickable elements
-    const clickableElements = document.querySelectorAll("a, button, [role=button], input, select, textarea")
-    clickableElements.forEach((el) => {
-      ;(el as HTMLElement).style.cursor = "none"
-    })
-
     return () => {
-      window.removeEventListener("mousemove", updateCursorPosition)
+      window.removeEventListener("mousemove", updatePosition)
       document.removeEventListener("mouseleave", handleMouseLeave)
       document.removeEventListener("mouseenter", handleMouseEnter)
-      document.body.style.cursor = ""
-
-      // Reset cursor on cleanup
-      clickableElements.forEach((el) => {
-        ;(el as HTMLElement).style.cursor = ""
-      })
     }
   }, [isVisible, isTouchDevice])
 
@@ -68,7 +53,7 @@ export default function CustomCursor() {
 
   return (
     <div
-      className="fixed pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-100 ease-out"
+      className="fixed pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 will-change-transform"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,

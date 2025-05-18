@@ -1,0 +1,18 @@
+/* Critical CSS for above-the-fold content */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Basic layout styles that should load immediately */
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Ensure content is visible immediately */
+[data-scroll-container] {
+  overflow-x: hidden;
+}

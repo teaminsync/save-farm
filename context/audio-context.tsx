@@ -1,68 +1,16 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
+import type React from "react"
+import { createContext, useContext, useState, useEffect, useRef } from "react"
 
-type AudioContextType = {
+interface AudioContextType {
   isPlaying: boolean
+  hasInteracted: boolean
   toggleAudio: () => void
-  volume: number
-  setVolume: (volume: number) => void
+  setHasInteracted: (value: boolean) => void
 }
 
 const AudioContext = createContext<AudioContextType | undefined>(undefined)
-
-export function AudioProvider({ children }: { children: ReactNode }) {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [volume, setVolume] = useState(0.5)
-  const [audio, setAudio] = useState<HTMLAudioElement | null>(null)
-
-  useEffect(() => {
-    // Create audio element only on client side
-    const audioElement = new Audio("/audio/background-music.mp3")
-    audioElement.loop = true
-    audioElement.volume = volume
-    setAudio(audioElement)
-
-    // Clean up on unmount
-    return () => {
-      if (audioElement) {
-        audioElement.pause()
-        audioElement.src = ""
-      }
-    }
-  }, [])
-
-  useEffect(() => {
-    if (!audio) return
-
-    // Update volume when it changes
-    audio.volume = volume
-  }, [volume, audio])
-
-  useEffect(() => {
-    if (!audio) return
-
-    // Play or pause based on isPlaying state
-    if (isPlaying) {
-      // Use a promise and catch any errors (browsers may block autoplay)
-      const playPromise = audio.play()
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.error("Autoplay prevented:", error)
-          setIsPlaying(false)
-        })
-      }
-    } else {
-      audio.pause()
-    }
-  }, [isPlaying, audio])
-
-  const toggleAudio = () => {
-    setIsPlaying((prev) => !prev)
-  }
-
-  return <AudioContext.Provider value={{ isPlaying, toggleAudio, volume, setVolume }}>{children}</AudioContext.Provider>
-}
 
 export function useAudio() {
   const context = useContext(AudioContext)
@@ -70,4 +18,71 @@ export function useAudio() {
     throw new Error("useAudio must be used within an AudioProvider")
   }
   return context
+}
+
+export function AudioProvider({ children }: { children: React.ReactNode }) {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [hasInteracted, setHasInteracted] = useState(false)
+  const [audioLoaded, setAudioLoaded] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  // Initialize audio element
+  useEffect(() => {
+    // Only create the audio element after user interaction
+    if (hasInteracted && !audioRef.current) {
+      const audio = new Audio("/audio/background-music.mp3")
+      audio.loop = true
+      audio.volume = 0.4
+
+      // Add event listeners
+      audio.addEventListener("canplaythrough", () => {
+        setAudioLoaded(true)
+      })
+
+      audioRef.current = audio
+
+      // Clean up
+      return () => {
+        audio.pause()
+        audio.src = ""
+        audioRef.current = null
+      }
+    }
+  }, [hasInteracted])
+
+  // Handle play/pause
+  useEffect(() => {
+    if (!audioRef.current || !audioLoaded) return
+
+    if (isPlaying) {
+      const playPromise = audioRef.current.play()
+
+      // Handle play promise to avoid DOMException
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.error("Audio play failed:", error)
+          setIsPlaying(false)
+        })
+      }
+    } else {
+      audioRef.current.pause()
+    }
+  }, [isPlaying, audioLoaded])
+
+  const toggleAudio = () => {
+    setIsPlaying((prev) => !prev)
+  }
+
+  return (
+    <AudioContext.Provider
+      value={{
+        isPlaying,
+        hasInteracted,
+        toggleAudio,
+        setHasInteracted,
+      }}
+    >
+      {children}
+    </AudioContext.Provider>
+  )
 }

@@ -8,7 +8,7 @@
   src: url("/fonts/Serena.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: swap; /* Improve font loading performance */
 }
 
 /* --- BASE LAYER OVERRIDES --- */
@@ -68,7 +68,6 @@
 
   * {
     @apply border-border;
-    cursor: none !important;
   }
 
   body {
@@ -96,6 +95,24 @@
   a,
   .font-sans {
     font-family: var(--font-sans), sans-serif;
+  }
+
+  /* Only apply cursor:none on non-touch devices */
+  @media (hover: hover) and (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+
+    html,
+    body,
+    a,
+    button,
+    [role="button"],
+    input,
+    select,
+    textarea {
+      cursor: none;
+    }
   }
 }
 
@@ -200,4 +217,9 @@ textarea {
 
 .animate-leaf-sway {
   animation: leaf-sway 3s ease-in-out infinite;
+}
+
+/* Content-visibility for off-screen elements */
+.cv-auto {
+  content-visibility: auto;
 }

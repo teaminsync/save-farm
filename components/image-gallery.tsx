@@ -192,7 +192,10 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
                   alt={image?.alt || "Gallery image"}
                   fill
                   className="object-cover"
-                  priority={index === currentIndex || index === (currentIndex + 1) % images.length}
+                  priority={index === currentIndex}
+                  loading={index === currentIndex ? "eager" : "lazy"}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={80}
                 />
               </div>
             )
