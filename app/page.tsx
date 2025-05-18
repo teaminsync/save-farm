@@ -16,6 +16,7 @@ export default function Home() {
   const logoRef = useRef(null)
   const introRef = useRef(null)
   const offeringsRef = useRef(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   // Register ScrollTrigger plugin
   useEffect(() => {
@@ -71,6 +72,13 @@ export default function Home() {
         ease: "power3.out",
       },
     )
+
+    // Ensure video plays immediately
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.error("Video autoplay failed:", error)
+      })
+    }
   }, [])
 
   const { scrollYProgress } = useScroll()
@@ -95,7 +103,7 @@ export default function Home() {
     },
     {
       name: "Mangesh Borkar",
-      text: "Save Farm was perfect for our family trip. The pool was clean, the activities were engaging, and the tractor ride was a highlight. Food, ambience, and stay all scored full marks. A fun and peaceful experience we’d love to repeat with our children again.",
+      text: "Save Farm was perfect for our family trip. The pool was clean, the activities were engaging, and the tractor ride was a highlight. Food, ambience, and stay all scored full marks. A fun and peaceful experience we'd love to repeat with our children again.",
       category: "Holiday ❘ Family",
     },
   ]
@@ -107,11 +115,15 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden" data-scroll-section>
         <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
           <video
+            ref={videoRef}
             src="/images/hero-background.mp4"
             autoPlay
-            loop
+            playsInline
             muted
+            loop
+            preload="auto"
             className="object-cover w-full h-full"
+            poster="/images/video-poster.png"
           >
             Save Farm serene landscape video.
           </video>
@@ -127,7 +139,7 @@ export default function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
-            <Image src="/images/save-farm-logo.svg" alt="Save Farm Logo" fill className="object-contain" />
+            <Image src="/images/save-farm-logo.svg" alt="Save Farm Logo" fill className="object-contain" priority />
           </motion.div>
 
           <motion.h1
@@ -139,31 +151,14 @@ export default function Home() {
             Reconnect with Nature
           </motion.h1>
 
-          {/* <motion.h1
-            className="text-4xl md:text-6xl font-serif text-fern mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            Reconnect with Nature
-          </motion.h1>
-
-          <motion.h1
-            className="text-4xl md:text-6xl font-serif text-natural mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            Reconnect with Nature
-          </motion.h1> */}
-
           <motion.p
             className="text-lg md:text-xl text-natural max-w-2xl mx-auto mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            Experience serenity in the heart of nature at Save Farm, where modern comfort blends with sustainable living.
+            Experience serenity in the heart of nature at Save Farm, where modern comfort blends with sustainable
+            living.
           </motion.p>
 
           <motion.div
@@ -177,13 +172,6 @@ export default function Home() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-
-            {/* <Button asChild className="bg-fern hover:bg-fern/90 text-warm-ivory px-6 py-3 text-lg">
-              <Link href="/accommodations" className="flex items-center">
-                Explore Accommodations
-                <ArrowRight className="ml-2 h-6 w-6" />
-              </Link>
-            </Button> */}
           </motion.div>
         </div>
 
@@ -273,10 +261,12 @@ export default function Home() {
                   alt="Luxury accommodations at Save Farm"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  loading="eager"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-serif text-fern mb-3">Elegant Retreats</h3>
+                <h3 className="text-xl font-serif text-fern mb-3">Luxury Accommodations</h3>
                 <p className="text-natural mb-4">
                   Experience our unique eco-friendly accommodations, from traditional Shetkari Niwas to elevated Machaan
                   Huts.
@@ -303,6 +293,8 @@ export default function Home() {
                   alt="Farm activities and adventures"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  loading="eager"
                 />
               </div>
               <div className="p-6">
@@ -332,6 +324,8 @@ export default function Home() {
                   alt="Save Farm packages and experiences"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  loading="eager"
                 />
               </div>
               <div className="p-6">
@@ -358,9 +352,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-fern mb-12 text-center">
-              What Our Guests Say
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-fern mb-12 text-center">What Our Guests Say</h2>
             <div className="min-h-[300px] md:min-h-[180px]">
               <TestimonialCarousel testimonials={testimonials} />
             </div>

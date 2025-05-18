@@ -8,7 +8,6 @@ import FloatingContactButton from "@/components/floating-contact-button"
 import AudioControlButton from "@/components/audio-control-button"
 import { AudioProvider } from "@/context/audio-context"
 import CustomCursor from "@/components/custom-cursor"
-import { Suspense } from "react"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -36,20 +35,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/Serena.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
 
-        {/* Load locomotive scroll CSS with low priority */}
+        {/* Preload critical fonts */}
+        <link rel="preload" href="/fonts/Serena.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+
+        {/* Preload critical media */}
+        <link rel="preload" href="/images/hero-background.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/images/save-farm-logo.svg" as="image" />
+
+        {/* Load locomotive scroll CSS */}
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css"
-          media="(min-width: 1px)"
-          precedence="low"
         />
 
         {/* Load Google fonts with display=swap */}
@@ -57,14 +58,11 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Serena:wght@400;500;600;700&display=swap"
         />
-
-        {/* Add preload for critical CSS */}
-        <link rel="preload" as="style" href="/styles/critical.css" />
       </head>
       <body data-scroll-container className={`${montserrat.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <AudioProvider>
-            <Suspense fallback={null}>{children}</Suspense>
+            {children}
             <FloatingContactButton />
             <AudioControlButton />
             <CustomCursor />
