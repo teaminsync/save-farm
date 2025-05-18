@@ -6,8 +6,24 @@ import { Leaf } from "lucide-react"
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
 
   useEffect(() => {
+    // Check if device is a touch device
+    const checkTouchDevice = () => {
+      setIsTouchDevice(
+        "ontouchstart" in window || navigator.maxTouchPoints > 0 || (navigator as any).msMaxTouchPoints > 0,
+      )
+    }
+
+    checkTouchDevice()
+
+    // If it's a touch device, don't apply custom cursor
+    if (isTouchDevice) {
+      document.body.style.cursor = ""
+      return
+    }
+
     // Add cursor:none to the body to hide the default cursor
     document.body.style.cursor = "none"
 
@@ -45,9 +61,10 @@ export default function CustomCursor() {
         ;(el as HTMLElement).style.cursor = ""
       })
     }
-  }, [isVisible])
+  }, [isVisible, isTouchDevice])
 
-  if (!isVisible) return null
+  // Don't render custom cursor on touch devices
+  if (isTouchDevice || !isVisible) return null
 
   return (
     <div
