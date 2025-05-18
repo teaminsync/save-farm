@@ -34,6 +34,24 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       audio.loop = true
       audio.volume = 0.4
 
+      // For mobile devices, we need to handle autoplay restrictions
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+      if (isMobile) {
+        // Add a touch event listener to the document to enable audio on first touch
+        const enableAudioOnTouch = () => {
+          if (audioRef.current) {
+            const playPromise = audioRef.current.play()
+            if (playPromise !== undefined) {
+              playPromise.catch((error) => {
+                console.error("Mobile audio play failed:", error)
+              })
+            }
+          }
+          document.removeEventListener("touchstart", enableAudioOnTouch)
+        }
+        document.addEventListener("touchstart", enableAudioOnTouch, { once: true })
+      }
+
       // Add event listeners
       audio.addEventListener("canplaythrough", () => {
         setAudioLoaded(true)
@@ -71,6 +89,9 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
   const toggleAudio = () => {
     setIsPlaying((prev) => !prev)
+    if (!hasInteracted) {
+      setHasInteracted(true)
+    }
   }
 
   return (
