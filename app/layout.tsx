@@ -8,7 +8,6 @@ import FloatingContactButton from "@/components/floating-contact-button"
 import AudioControlButton from "@/components/audio-control-button"
 import { AudioProvider } from "@/context/audio-context"
 import CustomCursor from "@/components/custom-cursor"
-import AudioInteractionPrompt from "@/components/audio-interaction-prompt"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -66,7 +65,6 @@ export default function RootLayout({
             {children}
             <FloatingContactButton />
             <AudioControlButton />
-            <AudioInteractionPrompt />
             <CustomCursor />
             <Toaster />
           </AudioProvider>
