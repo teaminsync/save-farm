@@ -276,7 +276,7 @@ export default function Home() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-serif text-fern mb-3">Luxury Accommodations</h3>
+                <h3 className="text-xl font-serif text-fern mb-3">Elegant Retreats</h3>
                 <p className="text-natural mb-4">
                   Experience our unique eco-friendly accommodations, from traditional Shetkari Niwas to elevated Machaan
                   Huts.
