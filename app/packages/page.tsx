@@ -55,7 +55,7 @@ export default function PackagesPage() {
       id: 2,
       name: "Farmstay - Double Occupancy",
       description: "Perfect for couples or two guests seeking peace and connection amidst serene farmlands.",
-      image: "/images/overnight-stay.jpg",
+      image: "/images/weekend-retreat.jpg",
       inclusions: [
         "2 Meals",
         "1 Breakfast",
@@ -70,7 +70,7 @@ export default function PackagesPage() {
       id: 3,
       name: "Farmstay - Family Room",
       description: "Designed for families to unwind and bond through shared rural experiences in comfort.",
-      image: "/images/weekend-retreat.jpg",
+      image: "/images/overnight-stay.jpg",
       inclusions: [
         "2 Meals",
         "1 Breakfast",

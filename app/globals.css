@@ -1,3 +1,10 @@
+/* Add this at the top of the file, right after the imports */
+html,
+body {
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
