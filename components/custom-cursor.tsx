@@ -53,7 +53,7 @@ export default function CustomCursor() {
 
   return (
     <div
-      className="fixed pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 will-change-transform"
+      className="fixed pointer-events-none z-[100000] transform -translate-x-1/2 -translate-y-1/2 will-change-transform"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
