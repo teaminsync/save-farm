@@ -133,7 +133,7 @@ export default function Footer() {
               </motion.div>
               <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
                 <Link
-                  href="https://www.youtube.com/@SaveFarmGholvad"
+                  href="https://www.youtube.com/channel/UCe0myiQAljaqZVg7iLe_YDA"
                   target="_blank"
                   className="text-warm-ivory hover:text-warm-ivory/70 transition-colors"
                 >
