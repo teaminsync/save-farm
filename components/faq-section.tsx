@@ -2,9 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown, ArrowRight } from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { ChevronDown } from "lucide-react"
 
 interface FAQItem {
   question: string
@@ -59,7 +57,10 @@ function FAQCategory({ title, faqs }: FAQCategoryProps) {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="pt-4 text-natural whitespace-pre-line">{faq.answer}</div>
+                  <div
+                    className="pt-4 text-natural whitespace-pre-line"
+                    dangerouslySetInnerHTML={{ __html: faq.answer }}
+                  ></div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -80,7 +81,6 @@ export default function FAQSection({ categories }: FAQSectionProps) {
           {categories.map((category, index) => (
             <FAQCategory key={index} title={category.title} faqs={category.faqs} />
           ))}
-    
         </div>
       </div>
     </section>

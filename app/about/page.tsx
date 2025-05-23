@@ -96,7 +96,7 @@ export default function AboutPage() {
         {
           question: "Where exactly is Save Farm located?",
           answer:
-            "We are 2 km from Gholvad Railway Station, 10 km from Dahanu Rd Railway Station and about 130 km (≈ 2 hrs 30 min) north of Mumbai via NH‑48. A detailed route map and GPS pin are sent with every confirmed booking.",
+            "We are 2 km from Gholvad Railway Station, 10 km from Dahanu Rd Railway Station and about 130 km (≈ 2 hrs 30 min) north of Mumbai via NH‑48. <a href='https://maps.app.goo.gl/ExHhm4QifmxTd1Hv6' target='_blank' rel='noopener noreferrer' class='text-fern hover:underline'>View on Google Maps</a>",
         },
         {
           question: "What makes Save Farm different from a typical resort?",
@@ -139,8 +139,7 @@ export default function AboutPage() {
       faqs: [
         {
           question: "What kind of food do you serve?",
-          answer:
-            "Homecooked local Maharashtrian cuisine is prepared in our farm kitchen.",
+          answer: "Homecooked local Maharashtrian cuisine is prepared in our farm kitchen.",
         },
         {
           question: "Are all meals vegetarian?",
@@ -169,8 +168,7 @@ export default function AboutPage() {
         },
         {
           question: "Is day‑entry possible?",
-          answer:
-            "Yes, 10 am – 5 pm with pre‑booking. Packages bundle lunch, high‑tea, and farm tour.",
+          answer: "Yes, 10 am – 5 pm with pre‑booking. Packages bundle lunch, high‑tea, and farm tour.",
         },
       ],
     },
@@ -193,8 +191,7 @@ export default function AboutPage() {
         },
         {
           question: "Smoking",
-          answer:
-            "Strictly prohibited inside rooms or the common dining hall.",
+          answer: "Strictly prohibited inside rooms or the common dining hall.",
         },
       ],
     },
@@ -203,8 +200,7 @@ export default function AboutPage() {
       faqs: [
         {
           question: "How do I confirm a stay?",
-          answer:
-            "50 % advance via UPI or net‑banking secures your dates. Balance due at check‑in.",
+          answer: "50 % advance via UPI or net‑banking secures your dates. Balance due at check‑in.",
         },
         {
           question: "Cancellation terms",
@@ -228,8 +224,7 @@ export default function AboutPage() {
         },
         {
           question: "Parking?",
-          answer:
-            "Free on‑site parking for up to 15 cars; buses need prior intimation.",
+          answer: "Free on‑site parking for up to 15 cars; buses need prior intimation.",
         },
         {
           question: "Pick‑up service?",
@@ -248,8 +243,7 @@ export default function AboutPage() {
         },
       ],
     },
-  ];
-
+  ]
 
   return (
     <LocomotiveLayout>
@@ -302,7 +296,9 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Save Farm is built on the vision of reconnecting people with the land—offering an authentic rural experience grounded in sustainability, culture, and community. Our mission is to transform tourism into a tool for awareness, well-being, and ecological balance.
+              Save Farm is built on the vision of reconnecting people with the land—offering an authentic rural
+              experience grounded in sustainability, culture, and community. Our mission is to transform tourism into a
+              tool for awareness, well-being, and ecological balance.
             </motion.p>
 
             <motion.p
@@ -312,7 +308,9 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              We strive to create a sanctuary where guests experience the serenity of village life, learn about organic farming, and immerse themselves in nature without compromising on comfort. Every stay supports conservation, local livelihoods, and mindful tourism.
+              We strive to create a sanctuary where guests experience the serenity of village life, learn about organic
+              farming, and immerse themselves in nature without compromising on comfort. Every stay supports
+              conservation, local livelihoods, and mindful tourism.
             </motion.p>
 
             <motion.p
@@ -322,9 +320,10 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Whether it’s walking through our orchards, joining a Warli art session, or simply listening to birdsong at sunrise—Save Farm invites you to slow down, engage with your surroundings, and rediscover the joy of living in harmony with nature.
+              Whether it’s walking through our orchards, joining a Warli art session, or simply listening to birdsong at
+              sunrise—Save Farm invites you to slow down, engage with your surroundings, and rediscover the joy of
+              living in harmony with nature.
             </motion.p>
-
           </div>
         </div>
       </section>
@@ -358,9 +357,7 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <p className="text-center text-natural mt-3 font-semibold text-lg italic">
-                  Mr. Prabhakar Save
-                </p>
+                <p className="text-center text-natural mt-3 font-semibold text-lg italic">Mr. Prabhakar Save</p>
               </motion.div>
 
               <motion.div
@@ -370,22 +367,27 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <p className="text-natural text-lg mb-6 leading-relaxed">
-                  Save Farm was born from a dream to transform barren land into a thriving horticultural paradise. What began in 1970 as a passion project by the Save family soon blossomed into a lush orchard in Maharashtra’s Konkan region.
+                  Save Farm was born from a dream to transform barren land into a thriving horticultural paradise. What
+                  began in 1970 as a passion project by the Save family soon blossomed into a lush orchard in
+                  Maharashtra’s Konkan region.
                 </p>
 
                 <p className="text-natural text-lg mb-6 leading-relaxed">
-                  Decades of scientific farming and experimentation led to the birth of Save Nursery — now a trusted name in plant supply and green knowledge sharing. Our hands-on expertise continues to inspire farmers, students, and eco-tourists alike.
+                  Decades of scientific farming and experimentation led to the birth of Save Nursery — now a trusted
+                  name in plant supply and green knowledge sharing. Our hands-on expertise continues to inspire farmers,
+                  students, and eco-tourists alike.
                 </p>
 
                 <p className="text-natural text-lg leading-relaxed">
-                  In 2015, we introduced Tarpa, our agro-eco tourism initiative rooted in Warli culture and sustainable living. Today, Save Farm stands as a symbol of regeneration, offering rural stays that are both restorative and rooted in tradition.
+                  In 2015, we introduced Tarpa, our agro-eco tourism initiative rooted in Warli culture and sustainable
+                  living. Today, Save Farm stands as a symbol of regeneration, offering rural stays that are both
+                  restorative and rooted in tradition.
                 </p>
               </motion.div>
             </div>
           </div>
         </div>
       </section>
-
 
       {/* Logo Symbolism Section */}
       <section className="py-20 bg-warm-ivory" data-scroll-section ref={logoRef}>
@@ -410,7 +412,12 @@ export default function AboutPage() {
                 className="flex justify-center"
               >
                 <div className="relative w-64 h-64">
-                  <Image src="/images/save-farm-logo2-scrolled.svg" alt="Save Farm Logo" fill className="object-contain" />
+                  <Image
+                    src="/images/save-farm-logo2-scrolled.svg"
+                    alt="Save Farm Logo"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </motion.div>
 
@@ -510,7 +517,7 @@ export default function AboutPage() {
       <section className="bg-warm-ivory" data-scroll-section>
         <FAQSection categories={faqCategories} />
       </section>
-      
+
       <section className="py-20 bg-fern text-warm-ivory" data-scroll-section>
         <div className="container px-4">
           <motion.div
@@ -534,7 +541,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
-
     </LocomotiveLayout>
   )
 }

@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState, useEffect, useRef } from "react"
 import NextImage from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, X } from "lucide-react"
 
 interface ImageGalleryProps {
   images: {
@@ -17,6 +17,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({})
+  const [isFullscreen, setIsFullscreen] = useState(false)
   const autoplayRef = useRef<NodeJS.Timeout | null>(null)
   const touchStartX = useRef(0)
   const touchEndX = useRef(0)
@@ -65,6 +66,29 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     }
   }, [])
 
+  // Pause autoplay when in fullscreen mode
+  useEffect(() => {
+    if (isFullscreen) {
+      pauseAutoplay()
+    } else {
+      resumeAutoplay()
+    }
+  }, [isFullscreen])
+
+  // Add event listener for escape key to exit fullscreen
+  useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isFullscreen) {
+        setIsFullscreen(false)
+      }
+    }
+
+    window.addEventListener("keydown", handleEscKey)
+    return () => {
+      window.removeEventListener("keydown", handleEscKey)
+    }
+  }, [isFullscreen])
+
   const startAutoplay = () => {
     if (autoplayRef.current) {
       clearInterval(autoplayRef.current)
@@ -83,7 +107,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
   }
 
   const resumeAutoplay = () => {
-    if (!autoplayRef.current) {
+    if (!autoplayRef.current && !isFullscreen) {
       startAutoplay()
     }
   }
@@ -151,6 +175,10 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     touchEndX.current = 0
   }
 
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen)
+  }
+
   // Ensure we have valid images to display
   if (!images || images.length === 0) {
     return (
@@ -168,13 +196,14 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
   return (
     <>
       <div
-        className="relative rounded-lg overflow-hidden"
+        className="relative rounded-lg overflow-hidden cursor-pointer"
         onMouseEnter={pauseAutoplay}
         onMouseLeave={resumeAutoplay}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchCancel}
+        onClick={toggleFullscreen}
       >
         <div className="relative h-[320px] md:h-80 w-full">
           {/* Display all images but only show the current one */}
@@ -243,6 +272,87 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
           ))}
         </div>
       </div>
+
+      {/* Fullscreen Modal */}
+      {isFullscreen && (
+        <div
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
+          onClick={() => setIsFullscreen(false)}
+        >
+          <button
+            className="absolute top-4 right-4 bg-warm-ivory/80 text-fern p-2 rounded-full z-50"
+            onClick={() => setIsFullscreen(false)}
+            aria-label="Close fullscreen view"
+          >
+            <X className="h-6 w-6" />
+          </button>
+
+          <div className="relative w-full h-full max-w-7xl max-h-[90vh] mx-auto p-4">
+            <div className="relative h-full w-full">
+              {images.map((image, index) => {
+                const src = image?.src && image.src.trim() !== "" ? image.src : placeholderImage
+                return (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-300 ${
+                      index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+                    }`}
+                  >
+                    <NextImage
+                      src={src || "/placeholder.svg"}
+                      alt={image?.alt || "Gallery image"}
+                      fill
+                      className="object-contain"
+                      sizes="100vw"
+                      quality={90}
+                    />
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Fullscreen navigation arrows */}
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-20"
+              onClick={(e) => {
+                e.stopPropagation()
+                handlePrev()
+              }}
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-3 rounded-full opacity-70 hover:opacity-100 transition-opacity z-20"
+              onClick={(e) => {
+                e.stopPropagation()
+                handleNext()
+              }}
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+
+            {/* Fullscreen dots indicator */}
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 z-20">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    index === currentIndex ? "bg-warm-ivory w-6" : "bg-warm-ivory/60"
+                  }`}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setCurrentIndex(index)
+                  }}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }

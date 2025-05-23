@@ -6,7 +6,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ArrowRight, HelpCircle } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 import LocomotiveLayout from "@/components/locomotive-layout"
 import { Button } from "@/components/ui/button"
@@ -249,7 +249,7 @@ export default function AccommodationsPage() {
                 <div className="p-8">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                     <h3 className="text-2xl font-serif text-fern mb-2 sm:mb-0">{accommodation.name}</h3>
-                    <span className="inline-block bg-fern/10 text-fern px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="inline-block bg-fern/10 text-fern px-3 py-1 rounded-full text-sm font-medium self-start sm:self-auto">
                       {accommodation.roomType}
                     </span>
                   </div>
