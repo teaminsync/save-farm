@@ -2,7 +2,9 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, ArrowRight } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 interface FAQItem {
   question: string
@@ -70,7 +72,7 @@ function FAQCategory({ title, faqs }: FAQCategoryProps) {
 
 export default function FAQSection({ categories }: FAQSectionProps) {
   return (
-    <section className="py-20 bg-warm-ivory">
+    <section className="py-20 bg-warm-ivory" id="faq">
       <div className="container px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif text-fern mb-12 text-center">Frequently Asked Questions</h2>
@@ -78,6 +80,7 @@ export default function FAQSection({ categories }: FAQSectionProps) {
           {categories.map((category, index) => (
             <FAQCategory key={index} title={category.title} faqs={category.faqs} />
           ))}
+    
         </div>
       </div>
     </section>

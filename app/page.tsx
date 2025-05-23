@@ -370,14 +370,15 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif mb-6">Ready to Experience Save Farm?</h2>
+            <h2 className="text-3xl md:text-4xl font-serif mb-6">Questions About Your Stay?</h2>
             <p className="text-lg mb-8 opacity-90">
-              Book your stay now and discover the perfect balance of comfort and nature.
+              Find answers to common questions about accommodations, activities, booking policies, and more in our
+              comprehensive FAQ section.
             </p>
 
             <Button asChild className="bg-warm-ivory text-fern hover:bg-warm-ivory/90">
-              <Link href="/packages">
-                View Our Packages
+              <Link href="/about#faq">
+                View FAQs
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
