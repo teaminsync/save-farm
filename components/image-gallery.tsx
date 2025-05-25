@@ -17,7 +17,6 @@ interface ImageGalleryProps {
 export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({})
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({})
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const autoplayRef = useRef<NodeJS.Timeout | null>(null)
@@ -25,7 +24,6 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
   const touchEndX = useRef(0)
   const savedScrollPosition = useRef(0)
   const locomotiveScrollInstance = useRef<any>(null)
-  const retryAttempts = useRef<Record<string, number>>({})
 
   // Client-side only
   useEffect(() => {
@@ -33,82 +31,37 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     return () => setIsMounted(false)
   }, [])
 
-  // Enhanced image preloading with retry logic
-  const preloadImage = useCallback(
-    (src: string, maxRetries = 3): Promise<void> => {
-      return new Promise((resolve) => {
-        if (!src || src.trim() === "" || imagesLoaded[src]) {
-          resolve()
-          return
-        }
+  // Preload images
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = images.map((image) => {
+        return new Promise<void>((resolve) => {
+          if (!image.src || image.src.trim() === "") {
+            resolve()
+            return
+          }
 
-        const img = new window.Image()
-        img.crossOrigin = "anonymous"
-
-        const attemptLoad = (attempt: number) => {
+          const img = new window.Image()
+          img.src = image.src
+          img.crossOrigin = "anonymous"
           img.onload = () => {
             setImagesLoaded((prev) => ({
               ...prev,
-              [src]: true,
-            }))
-            setImageErrors((prev) => ({
-              ...prev,
-              [src]: false,
+              [image.src]: true,
             }))
             resolve()
           }
-
           img.onerror = () => {
-            console.warn(`Failed to load image: ${src} (attempt ${attempt}/${maxRetries})`)
-
-            if (attempt < maxRetries) {
-              // Retry with exponential backoff
-              setTimeout(() => {
-                attemptLoad(attempt + 1)
-              }, Math.pow(2, attempt) * 1000)
-            } else {
-              console.error(`Failed to load image after ${maxRetries} attempts: ${src}`)
-              setImageErrors((prev) => ({
-                ...prev,
-                [src]: true,
-              }))
-              resolve()
-            }
+            resolve()
           }
-
-          // Add cache busting for retries
-          const cacheBuster = attempt > 1 ? `?retry=${attempt}&t=${Date.now()}` : ""
-          img.src = src + cacheBuster
-        }
-
-        attemptLoad(1)
+        })
       })
-    },
-    [imagesLoaded],
-  )
 
-  // Preload all images with staggered loading
-  useEffect(() => {
-    const preloadImages = async () => {
-      if (!images || images.length === 0) return
-
-      // Load first image immediately
-      if (images[0]?.src) {
-        await preloadImage(images[0].src)
-      }
-
-      // Load remaining images with small delays to prevent overwhelming the browser
-      for (let i = 1; i < images.length; i++) {
-        if (images[i]?.src) {
-          setTimeout(() => {
-            preloadImage(images[i].src)
-          }, i * 200) // 200ms delay between each image
-        }
-      }
+      await Promise.all(imagePromises)
     }
 
     preloadImages()
-  }, [images, preloadImage])
+  }, [images])
 
   // Start autoplay
   useEffect(() => {
@@ -122,7 +75,9 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
 
   // Find and store the locomotive scroll instance
   useEffect(() => {
+    // Try to find the locomotive scroll instance
     const findLocomotiveScroll = () => {
+      // Look for the locomotive-scroll element
       const scrollEl = document.querySelector("[data-scroll-container]")
       if (scrollEl && (scrollEl as any).__locomotiveScroll) {
         locomotiveScrollInstance.current = (scrollEl as any).__locomotiveScroll
@@ -142,12 +97,14 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
       unlockScroll()
     }
 
+    // Add event listener for escape key
     const handleEscKey = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isFullscreen) {
         setIsFullscreen(false)
       }
     }
 
+    // Add event listeners for keyboard navigation
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isFullscreen) return
 
@@ -181,14 +138,17 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     }
   }, [isFullscreen])
 
-  // Scroll locking functions
+  // Aggressive scroll locking
   const lockScroll = useCallback(() => {
+    // Save current scroll position
     savedScrollPosition.current = window.scrollY
 
+    // Disable locomotive scroll if it exists
     if (locomotiveScrollInstance.current) {
       locomotiveScrollInstance.current.stop()
     }
 
+    // Apply styles to prevent scrolling on html and body
     document.documentElement.style.overflow = "hidden"
     document.documentElement.style.height = "100%"
     document.body.style.overflow = "hidden"
@@ -198,15 +158,19 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     document.body.style.top = `-${savedScrollPosition.current}px`
     document.body.style.width = "100%"
 
+    // Prevent wheel events
     window.addEventListener("wheel", preventDefaultScroll, { passive: false })
+    // Prevent touchmove events
     window.addEventListener("touchmove", preventDefaultScroll, { passive: false })
   }, [])
 
   const unlockScroll = useCallback(() => {
+    // Re-enable locomotive scroll if it exists
     if (locomotiveScrollInstance.current) {
       locomotiveScrollInstance.current.start()
     }
 
+    // Remove styles that prevent scrolling
     document.documentElement.style.overflow = ""
     document.documentElement.style.height = ""
     document.body.style.overflow = ""
@@ -216,8 +180,10 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     document.body.style.top = ""
     document.body.style.width = ""
 
+    // Restore scroll position
     window.scrollTo(0, savedScrollPosition.current)
 
+    // Remove event listeners
     window.removeEventListener("wheel", preventDefaultScroll)
     window.removeEventListener("touchmove", preventDefaultScroll)
   }, [])
@@ -269,10 +235,12 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
+    // If we've started a horizontal swipe, prevent default to avoid page scrolling
     if (touchStartX.current !== 0) {
       const currentX = e.touches[0].clientX
       const diff = touchStartX.current - currentX
 
+      // If horizontal movement is significant, prevent default
       if (Math.abs(diff) > 10) {
         e.preventDefault()
       }
@@ -282,20 +250,25 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
   }
 
   const handleTouchEnd = () => {
+    // Only process if we have both start and end values
     if (touchStartX.current === 0 || touchEndX.current === 0) {
       return
     }
 
     const diff = touchStartX.current - touchEndX.current
 
+    // If the difference is significant enough to be considered a swipe
     if (Math.abs(diff) > 50) {
       if (diff > 0) {
+        // Swipe left, go to next
         handleNext()
       } else {
+        // Swipe right, go to prev
         handlePrev()
       }
     }
 
+    // Reset touch values after processing
     touchStartX.current = 0
     touchEndX.current = 0
   }
@@ -306,32 +279,13 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
   }
 
   const toggleFullscreen = () => {
+    // Close any other open modals first by dispatching a custom event
     if (!isFullscreen) {
       const closeEvent = new CustomEvent("closeAllImageGalleries")
       window.dispatchEvent(closeEvent)
     }
     setIsFullscreen(!isFullscreen)
   }
-
-  // Handle image load error with retry
-  const handleImageError = useCallback((src: string) => {
-    const currentAttempts = retryAttempts.current[src] || 0
-    if (currentAttempts < 3) {
-      retryAttempts.current[src] = currentAttempts + 1
-      // Force re-render to retry loading
-      setTimeout(() => {
-        setImagesLoaded((prev) => ({
-          ...prev,
-          [src]: false,
-        }))
-      }, 1000 * Math.pow(2, currentAttempts))
-    } else {
-      setImageErrors((prev) => ({
-        ...prev,
-        [src]: true,
-      }))
-    }
-  }, [])
 
   // Ensure we have valid images to display
   if (!images || images.length === 0) {
@@ -342,6 +296,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     )
   }
 
+  // Use a placeholder image if the current image source is empty or invalid
   const placeholderImage = "/placeholder.svg?height=320&width=480"
   const currentImage = images[currentIndex]
   const imageSrc = currentImage?.src && currentImage.src.trim() !== "" ? currentImage.src : placeholderImage
@@ -358,72 +313,27 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
         onTouchCancel={handleTouchCancel}
         onClick={toggleFullscreen}
       >
-        <div className="relative h-[320px] md:h-80 w-full bg-fern/5">
+        <div className="relative h-[320px] md:h-80 w-full">
           {/* Display all images but only show the current one */}
           {images.map((image, index) => {
             const src = image?.src && image.src.trim() !== "" ? image.src : placeholderImage
-            const isCurrentImage = index === currentIndex
-            const isLoaded = imagesLoaded[src]
-            const hasError = imageErrors[src]
-
             return (
               <div
                 key={index}
-                className={`absolute inset-0 transition-opacity duration-500 ${
-                  isCurrentImage ? "opacity-100 z-10" : "opacity-0 z-0"
+                className={`absolute inset-0 transition-opacity duration-300 ${
+                  index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
                 }`}
               >
-                {hasError ? (
-                  // Error fallback
-                  <div className="w-full h-full flex items-center justify-center bg-fern/10">
-                    <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-2 bg-fern/20 rounded-lg flex items-center justify-center">
-                        <svg className="w-8 h-8 text-fern/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
-                      </div>
-                      <p className="text-sm text-fern/60">Image unavailable</p>
-                    </div>
-                  </div>
-                ) : (
-                  <>
-                    <NextImage
-                      src={src}
-                      alt={image?.alt || "Gallery image"}
-                      fill
-                      className={`object-cover transition-opacity duration-300 ${
-                        isLoaded ? "opacity-100" : "opacity-0"
-                      }`}
-                      priority={index === 0}
-                      loading={index === 0 ? "eager" : "lazy"}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      quality={75}
-                      onLoad={() => {
-                        setImagesLoaded((prev) => ({
-                          ...prev,
-                          [src]: true,
-                        }))
-                      }}
-                      onError={() => handleImageError(src)}
-                      unoptimized={false}
-                    />
-
-                    {/* Loading indicator */}
-                    {isCurrentImage && !isLoaded && !hasError && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-fern/5">
-                        <div className="flex flex-col items-center">
-                          <div className="w-8 h-8 border-2 border-fern border-t-transparent rounded-full animate-spin mb-2" />
-                          <p className="text-sm text-fern/60">Loading...</p>
-                        </div>
-                      </div>
-                    )}
-                  </>
-                )}
+                <NextImage
+                  src={src || "/placeholder.svg"}
+                  alt={image?.alt || "Gallery image"}
+                  fill
+                  className="object-cover"
+                  priority={index === currentIndex}
+                  loading={index === currentIndex ? "eager" : "lazy"}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={80}
+                />
               </div>
             )
           })}
@@ -471,7 +381,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
         </div>
       </div>
 
-      {/* Fullscreen Modal */}
+      {/* Fullscreen Modal - Using createPortal to render directly to body */}
       {isMounted &&
         isFullscreen &&
         createPortal(
@@ -501,62 +411,16 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
             </button>
 
             <div className="relative max-w-5xl w-[95%] mx-auto" onClick={(e) => e.stopPropagation()}>
-              <div className="relative aspect-video w-full bg-black/20 rounded-lg overflow-hidden">
-                {imageErrors[imageSrc] ? (
-                  // Error fallback for modal
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center text-warm-ivory">
-                      <div className="w-20 h-20 mx-auto mb-4 bg-warm-ivory/20 rounded-lg flex items-center justify-center">
-                        <svg
-                          className="w-10 h-10 text-warm-ivory/60"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
-                      </div>
-                      <p className="text-warm-ivory/80">Image unavailable</p>
-                    </div>
-                  </div>
-                ) : (
-                  <>
-                    <NextImage
-                      src={imageSrc}
-                      alt={currentImage?.alt || "Gallery image"}
-                      fill
-                      className={`object-contain transition-opacity duration-300 ${
-                        imagesLoaded[imageSrc] ? "opacity-100" : "opacity-0"
-                      }`}
-                      sizes="100vw"
-                      quality={90}
-                      priority
-                      onLoad={() => {
-                        setImagesLoaded((prev) => ({
-                          ...prev,
-                          [imageSrc]: true,
-                        }))
-                      }}
-                      onError={() => handleImageError(imageSrc)}
-                      unoptimized={false}
-                    />
-
-                    {/* Loading indicator for modal */}
-                    {!imagesLoaded[imageSrc] && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="flex flex-col items-center text-warm-ivory">
-                          <div className="w-12 h-12 border-3 border-warm-ivory border-t-transparent rounded-full animate-spin mb-4" />
-                          <p className="text-warm-ivory/80">Loading image...</p>
-                        </div>
-                      </div>
-                    )}
-                  </>
-                )}
+              <div className="relative aspect-video w-full">
+                <NextImage
+                  src={imageSrc || "/placeholder.svg"}
+                  alt={currentImage?.alt || "Gallery image"}
+                  fill
+                  className="object-contain"
+                  sizes="100vw"
+                  quality={90}
+                  priority
+                />
               </div>
 
               {/* Modal navigation arrows */}
