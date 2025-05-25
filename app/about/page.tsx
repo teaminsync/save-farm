@@ -168,7 +168,7 @@ export default function AboutPage() {
         },
         {
           question: "Is day‑entry possible?",
-          answer: "Yes, 10 am – 5 pm with pre‑booking. Packages bundle lunch, high‑tea, and farm tour.",
+          answer: "Yes, 9:30 am – 3:30 pm with pre-booking. Packages include lunch, high-tea, and a farm tour.",
         },
       ],
     },
@@ -178,7 +178,7 @@ export default function AboutPage() {
         {
           question: "Alcohol policy",
           answer:
-            "Strictly no alcohol and no narcotics on the premises. We aim to maintain a serene, family‑friendly atmosphere and comply with rural licensing laws.",
+            "Strictly no alcohol and no narcotics on the premises. We aim to maintain a serene, family‑friendly atmosphere.",
         },
         {
           question: "Noise policy",
