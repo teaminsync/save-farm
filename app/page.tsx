@@ -12,6 +12,24 @@ import { Button } from "@/components/ui/button"
 import AudioInteractionPrompt from "@/components/audio-interaction-prompt"
 import TestimonialCarousel from "@/components/testimonial-carousel"
 
+// Generate blur placeholder for better loading experience
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g">
+      <stop stopColor="#f6f7f8" offset="20%" />
+      <stop stopColor="#edeef1" offset="50%" />
+      <stop stopColor="#f6f7f8" offset="70%" />
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="#f6f7f8" />
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+  <animate xlinkHref="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+</svg>`
+
+const toBase64 = (str: string) =>
+  typeof window === "undefined" ? Buffer.from(str).toString("base64") : window.btoa(str)
+
 export default function Home() {
   const logoRef = useRef(null)
   const introRef = useRef(null)
@@ -73,8 +91,9 @@ export default function Home() {
       },
     )
 
-    // Ensure video plays immediately
+    // Ensure video plays immediately with better loading
     if (videoRef.current) {
+      videoRef.current.load() // Force reload
       videoRef.current.play().catch((error) => {
         console.error("Video autoplay failed:", error)
       })
@@ -124,6 +143,10 @@ export default function Home() {
             preload="auto"
             className="object-cover w-full h-full"
             poster="/images/video-poster.png"
+            style={{
+              willChange: "transform",
+              backfaceVisibility: "hidden",
+            }}
           >
             Save Farm serene landscape video.
           </video>
@@ -139,7 +162,14 @@ export default function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
-            <Image src="/images/save-farm-logo.svg" alt="Save Farm Logo" fill className="object-contain" priority />
+            <Image
+              src="/images/save-farm-logo.svg"
+              alt="Save Farm Logo"
+              fill
+              className="object-contain"
+              priority
+              sizes="160px"
+            />
           </motion.div>
 
           <motion.h1
@@ -188,7 +218,6 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Rest of your sections remain unchanged */}
       {/* Introduction Section */}
       <section className="py-20 bg-warm-ivory" data-scroll-section ref={introRef}>
         <div className="container px-4">
@@ -262,7 +291,9 @@ export default function Home() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="eager"
+                  priority
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(400, 240))}`}
                 />
               </div>
               <div className="p-6">
@@ -294,7 +325,9 @@ export default function Home() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="eager"
+                  priority
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(400, 240))}`}
                 />
               </div>
               <div className="p-6">
@@ -325,7 +358,9 @@ export default function Home() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="eager"
+                  priority
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(400, 240))}`}
                 />
               </div>
               <div className="p-6">

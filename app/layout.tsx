@@ -8,11 +8,12 @@ import FloatingContactButton from "@/components/floating-contact-button"
 import AudioControlButton from "@/components/audio-control-button"
 import { AudioProvider } from "@/context/audio-context"
 import CustomCursor from "@/components/custom-cursor"
+import PerformanceOptimizer from "@/components/performance-optimizer"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: "swap", // Improve font loading performance
+  display: "swap",
 })
 
 const playfair = Playfair_Display({
@@ -43,9 +44,22 @@ export default function RootLayout({
         {/* Preload critical fonts */}
         <link rel="preload" href="/fonts/Serena.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
 
-        {/* Preload critical media */}
+        {/* Preload critical media with high priority */}
         <link rel="preload" href="/images/hero-background.mp4" as="video" type="video/mp4" />
+        <link rel="preload" href="/images/video-poster.png" as="image" />
         <link rel="preload" href="/images/save-farm-logo.svg" as="image" />
+
+        {/* Preload hero images for all pages */}
+        <link rel="preload" href="/images/accommodations-hero.jpg" as="image" />
+        <link rel="preload" href="/images/activities-hero.jpg" as="image" />
+        <link rel="preload" href="/images/packages-hero.jpg" as="image" />
+        <link rel="preload" href="/images/about-hero.jpg" as="image" />
+        <link rel="preload" href="/images/tarpa-hero.jpg" as="image" />
+
+        {/* Preload key preview images */}
+        <link rel="preload" href="/images/accommodation-preview.jpg" as="image" />
+        <link rel="preload" href="/images/activities-preview.jpg" as="image" />
+        <link rel="preload" href="/images/packages-preview.jpg" as="image" />
 
         {/* Load locomotive scroll CSS */}
         <link
@@ -58,10 +72,15 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Serena:wght@400;500;600;700&display=swap"
         />
+
+        {/* DNS prefetch for better performance */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
       </head>
       <body data-scroll-container className={`${montserrat.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <AudioProvider>
+            <PerformanceOptimizer />
             {children}
             <FloatingContactButton />
             <AudioControlButton />

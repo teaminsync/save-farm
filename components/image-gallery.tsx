@@ -14,6 +14,24 @@ interface ImageGalleryProps {
   autoplaySpeed?: number
 }
 
+// Generate blur placeholder for better loading experience
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g">
+      <stop stopColor="#f6f7f8" offset="20%" />
+      <stop stopColor="#edeef1" offset="50%" />
+      <stop stopColor="#f6f7f8" offset="70%" />
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="#f6f7f8" />
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+  <animate xlinkHref="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+</svg>`
+
+const toBase64 = (str: string) =>
+  typeof window === "undefined" ? Buffer.from(str).toString("base64") : window.btoa(str)
+
 export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({})
@@ -31,10 +49,10 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     return () => setIsMounted(false)
   }, [])
 
-  // Preload images
+  // Aggressive preloading of images
   useEffect(() => {
     const preloadImages = async () => {
-      const imagePromises = images.map((image) => {
+      const imagePromises = images.map((image, index) => {
         return new Promise<void>((resolve) => {
           if (!image.src || image.src.trim() === "") {
             resolve()
@@ -44,6 +62,12 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
           const img = new window.Image()
           img.src = image.src
           img.crossOrigin = "anonymous"
+
+          // Preload with high priority for first few images
+          if (index < 3) {
+            img.loading = "eager"
+          }
+
           img.onload = () => {
             setImagesLoaded((prev) => ({
               ...prev,
@@ -75,9 +99,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
 
   // Find and store the locomotive scroll instance
   useEffect(() => {
-    // Try to find the locomotive scroll instance
     const findLocomotiveScroll = () => {
-      // Look for the locomotive-scroll element
       const scrollEl = document.querySelector("[data-scroll-container]")
       if (scrollEl && (scrollEl as any).__locomotiveScroll) {
         locomotiveScrollInstance.current = (scrollEl as any).__locomotiveScroll
@@ -97,14 +119,12 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
       unlockScroll()
     }
 
-    // Add event listener for escape key
     const handleEscKey = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isFullscreen) {
         setIsFullscreen(false)
       }
     }
 
-    // Add event listeners for keyboard navigation
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isFullscreen) return
 
@@ -124,7 +144,6 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     }
   }, [isFullscreen])
 
-  // Custom event to close all galleries
   useEffect(() => {
     const handleCloseAllGalleries = () => {
       if (isFullscreen) {
@@ -138,17 +157,13 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     }
   }, [isFullscreen])
 
-  // Aggressive scroll locking
   const lockScroll = useCallback(() => {
-    // Save current scroll position
     savedScrollPosition.current = window.scrollY
 
-    // Disable locomotive scroll if it exists
     if (locomotiveScrollInstance.current) {
       locomotiveScrollInstance.current.stop()
     }
 
-    // Apply styles to prevent scrolling on html and body
     document.documentElement.style.overflow = "hidden"
     document.documentElement.style.height = "100%"
     document.body.style.overflow = "hidden"
@@ -158,19 +173,15 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     document.body.style.top = `-${savedScrollPosition.current}px`
     document.body.style.width = "100%"
 
-    // Prevent wheel events
     window.addEventListener("wheel", preventDefaultScroll, { passive: false })
-    // Prevent touchmove events
     window.addEventListener("touchmove", preventDefaultScroll, { passive: false })
   }, [])
 
   const unlockScroll = useCallback(() => {
-    // Re-enable locomotive scroll if it exists
     if (locomotiveScrollInstance.current) {
       locomotiveScrollInstance.current.start()
     }
 
-    // Remove styles that prevent scrolling
     document.documentElement.style.overflow = ""
     document.documentElement.style.height = ""
     document.body.style.overflow = ""
@@ -180,10 +191,8 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     document.body.style.top = ""
     document.body.style.width = ""
 
-    // Restore scroll position
     window.scrollTo(0, savedScrollPosition.current)
 
-    // Remove event listeners
     window.removeEventListener("wheel", preventDefaultScroll)
     window.removeEventListener("touchmove", preventDefaultScroll)
   }, [])
@@ -229,18 +238,15 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     goToNextSlide()
   }
 
-  // Touch handlers for mobile swipe
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    // If we've started a horizontal swipe, prevent default to avoid page scrolling
     if (touchStartX.current !== 0) {
       const currentX = e.touches[0].clientX
       const diff = touchStartX.current - currentX
 
-      // If horizontal movement is significant, prevent default
       if (Math.abs(diff) > 10) {
         e.preventDefault()
       }
@@ -250,25 +256,20 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
   }
 
   const handleTouchEnd = () => {
-    // Only process if we have both start and end values
     if (touchStartX.current === 0 || touchEndX.current === 0) {
       return
     }
 
     const diff = touchStartX.current - touchEndX.current
 
-    // If the difference is significant enough to be considered a swipe
     if (Math.abs(diff) > 50) {
       if (diff > 0) {
-        // Swipe left, go to next
         handleNext()
       } else {
-        // Swipe right, go to prev
         handlePrev()
       }
     }
 
-    // Reset touch values after processing
     touchStartX.current = 0
     touchEndX.current = 0
   }
@@ -279,7 +280,6 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
   }
 
   const toggleFullscreen = () => {
-    // Close any other open modals first by dispatching a custom event
     if (!isFullscreen) {
       const closeEvent = new CustomEvent("closeAllImageGalleries")
       window.dispatchEvent(closeEvent)
@@ -287,7 +287,6 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     setIsFullscreen(!isFullscreen)
   }
 
-  // Ensure we have valid images to display
   if (!images || images.length === 0) {
     return (
       <div className="relative rounded-lg overflow-hidden bg-fern/10 h-80 flex items-center justify-center">
@@ -296,7 +295,6 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     )
   }
 
-  // Use a placeholder image if the current image source is empty or invalid
   const placeholderImage = "/placeholder.svg?height=320&width=480"
   const currentImage = images[currentIndex]
   const imageSrc = currentImage?.src && currentImage.src.trim() !== "" ? currentImage.src : placeholderImage
@@ -314,9 +312,10 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
         onClick={toggleFullscreen}
       >
         <div className="relative h-[320px] md:h-80 w-full">
-          {/* Display all images but only show the current one */}
           {images.map((image, index) => {
             const src = image?.src && image.src.trim() !== "" ? image.src : placeholderImage
+            const isPriority = index === currentIndex || index === 0
+
             return (
               <div
                 key={index}
@@ -329,17 +328,18 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
                   alt={image?.alt || "Gallery image"}
                   fill
                   className="object-cover"
-                  priority={index === currentIndex}
-                  loading={index === currentIndex ? "eager" : "lazy"}
+                  priority={isPriority}
+                  loading={isPriority ? "eager" : "lazy"}
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={80}
+                  quality={85}
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(480, 320))}`}
                 />
               </div>
             )
           })}
         </div>
 
-        {/* Navigation arrows */}
         <button
           className="absolute left-2 top-1/2 -translate-y-1/2 bg-warm-ivory/80 text-fern p-2 rounded-full opacity-70 hover:opacity-100 transition-opacity z-20"
           onClick={(e) => {
@@ -362,7 +362,6 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
           <ChevronRight className="h-5 w-5" />
         </button>
 
-        {/* Dots indicator */}
         <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
           {images.map((_, index) => (
             <button
@@ -381,7 +380,6 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
         </div>
       </div>
 
-      {/* Fullscreen Modal - Using createPortal to render directly to body */}
       {isMounted &&
         isFullscreen &&
         createPortal(
@@ -418,12 +416,13 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
                   fill
                   className="object-contain"
                   sizes="100vw"
-                  quality={90}
+                  quality={95}
                   priority
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(800, 600))}`}
                 />
               </div>
 
-              {/* Modal navigation arrows */}
               <button
                 className="absolute left-2 top-1/2 -translate-y-1/2 bg-warm-ivory/90 text-fern p-2 md:p-3 rounded-full opacity-90 hover:opacity-100 transition-opacity z-20"
                 onClick={(e) => {
@@ -446,7 +445,6 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
                 <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
               </button>
 
-              {/* Modal dots indicator */}
               <div className="absolute -bottom-10 left-0 right-0 flex justify-center gap-3 z-20">
                 {images.map((_, index) => (
                   <button
