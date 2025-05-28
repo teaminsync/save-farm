@@ -251,8 +251,19 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-warm-ivory/20 mt-12 pt-6 text-center">
-          <p className="text-warm-ivory/70 text-sm">
+          <p className="text-warm-ivory/70 text-sm mb-2">
             &copy; {new Date().getFullYear()} Save Farm. All rights reserved.
+          </p>
+          <p className="text-warm-ivory/60 text-xs">
+            Designed & Developed by{" "}
+            <Link
+              href="https://www.instagram.com/insync.solutions/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-warm-ivory/80 hover:text-warm-ivory transition-colors font-medium"
+            >
+              InSync Solutions
+            </Link>
           </p>
         </div>
       </div>
