@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Montserrat, Playfair_Display } from "next/font/google"
+import { Montserrat, Playfair_Display } from 'next/font/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
@@ -26,6 +26,10 @@ export const metadata: Metadata = {
   description:
     "Experience serenity in the heart of nature at Save Farm, where modern comfort blends with sustainable living.",
   generator: "InSync Solutions",
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
@@ -49,7 +53,7 @@ export default function RootLayout({
         <link rel="preload" href="/images/video-poster.png" as="image" />
         <link rel="preload" href="/images/save-farm-logo.svg" as="image" />
 
-        {/* Preload hero images for all pages */}
+        {/* Preload key preview images */}
         <link rel="preload" href="/images/accommodations-hero.jpg" as="image" />
         <link rel="preload" href="/images/activities-hero.jpg" as="image" />
         <link rel="preload" href="/images/packages-hero.jpg" as="image" />
