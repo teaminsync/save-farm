@@ -12,24 +12,6 @@ import { Button } from "@/components/ui/button"
 import AudioInteractionPrompt from "@/components/audio-interaction-prompt"
 import TestimonialCarousel from "@/components/testimonial-carousel"
 
-// Generate blur placeholder for better loading experience
-const shimmer = (w: number, h: number) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stopColor="#f6f7f8" offset="20%" />
-      <stop stopColor="#edeef1" offset="50%" />
-      <stop stopColor="#f6f7f8" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#f6f7f8" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlinkHref="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`
-
-const toBase64 = (str: string) =>
-  typeof window === "undefined" ? Buffer.from(str).toString("base64") : window.btoa(str)
-
 export default function Home() {
   const logoRef = useRef(null)
   const introRef = useRef(null)
@@ -135,7 +117,7 @@ export default function Home() {
         <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
           <video
             ref={videoRef}
-            src="/images/hero-background.webm"
+            src="https://res.cloudinary.com/ducsps1cw/video/upload/v1748522124/hero-background_sbg5xg.webm"
             autoPlay
             playsInline
             muted
@@ -163,7 +145,7 @@ export default function Home() {
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
             <Image
-              src="/images/save-farm-logo.svg"
+              src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748524921/save-farm-logo_lkrlkl.svg"
               alt="Save Farm Logo"
               fill
               className="object-contain"
@@ -286,14 +268,12 @@ export default function Home() {
             >
               <div className="relative h-60">
                 <Image
-                  src="/images/accommodation-preview.webp"
+                  src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748525283/accommodation-preview_hbcfip.webp"
                   alt="Luxury accommodations at Save Farm"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority
-                  placeholder="blur"
-                  blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(400, 240))}`}
                 />
               </div>
               <div className="p-6">
@@ -320,14 +300,12 @@ export default function Home() {
             >
               <div className="relative h-60">
                 <Image
-                  src="/images/activities-preview.webp"
+                  src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748523519/activities-preview_w5igey.webp"
                   alt="Farm activities and adventures"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority
-                  placeholder="blur"
-                  blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(400, 240))}`}
                 />
               </div>
               <div className="p-6">
@@ -353,14 +331,12 @@ export default function Home() {
             >
               <div className="relative h-60">
                 <Image
-                  src="/images/packages-preview.webp"
+                  src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748525135/packages-preview_fwhrek.webp"
                   alt="Save Farm packages and experiences"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority
-                  placeholder="blur"
-                  blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(400, 240))}`}
                 />
               </div>
               <div className="p-6">

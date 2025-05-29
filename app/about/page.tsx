@@ -250,7 +250,13 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/about-hero.webp" alt="Save Farm landscape" fill className="object-cover" priority />
+          <Image
+            src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748550749/about-hero_irf1bj.webp"
+            alt="Save Farm landscape"
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-fern/30" />
         </div>
 
@@ -351,7 +357,7 @@ export default function AboutPage() {
               >
                 <div className="relative h-80 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/farm-history.webp"
+                    src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748550754/farm-history_mre5vw.webp"
                     alt="Save Farm in its early days"
                     fill
                     className="object-cover"
@@ -413,7 +419,7 @@ export default function AboutPage() {
               >
                 <div className="relative w-64 h-64">
                   <Image
-                    src="/images/save-farm-logo2-scrolled.svg"
+                    src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748550794/save-farm-logo2-scrolled_qxmhv2.svg"
                     alt="Save Farm Logo"
                     fill
                     className="object-contain"

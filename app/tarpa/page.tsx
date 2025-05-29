@@ -104,31 +104,31 @@ export default function TarpaPage() {
       title: "Tribal Culture & Heritage",
       description:
         "Engage with the Warli community through storytelling, folk art, and dance performances that celebrate indigenous traditions and way of life.",
-      image: "/images/tarpa-cultural.webp",
+      image: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748550939/tarpa-cultural_ro0rjo.webp",
     },
     {
       title: "Sustainable Stay",
       description:
         "Our nature-inspired accommodations are crafted using eco-friendly materials, designed to offer comfort while treading lightly on the earth.",
-      image: "/images/tarpa-accommodations.webp",
+      image: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748551117/tarpa-accommodations_vfwqwt.webp",
     },
     {
       title: "Guided Farm Walks",
       description:
         "Join our curated walks to explore organic farms, water harvesting systems, and native plant species while learning about rural sustainability.",
-      image: "/images/tarpa-nature-walks.webp",
+      image: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748551134/tarpa-nature-walks_ucylxy.webp",
     },
     {
       title: "Rural Activities & Handicrafts",
       description:
         "Try your hand at traditional activities like mat weaving, pottery, or bamboo craft in interactive sessions guided by local artisans.",
-      image: "/images/tarpa-workshops.webp",
+      image: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748551127/tarpa-workshops_ehjw8i.webp",
     },
     {
       title: "Seasonal Meals from the Farm",
       description:
         "Enjoy freshly prepared meals using organic ingredients sourced directly from the farm, reflecting the seasonal bounty of the region.",
-      image: "/images/tarpa-cuisine.webp",
+      image: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748550938/tarpa-cuisine_epgoth.webp",
     },
   ]
 
@@ -139,7 +139,7 @@ export default function TarpaPage() {
         <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/tarpa-hero.webp"
+              src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748550937/tarpa-hero_bs4r1m.webp"
               alt="Tarpa - Save Farm's signature experience"
               fill
               className="object-cover"
@@ -201,13 +201,16 @@ export default function TarpaPage() {
                     playsInline
                     preload="auto"
                     className="w-[70%] max-w-[700px] h-auto rounded-xl shadow-lg"
-                    poster="/images/tarpa-video-poster.webp"
+                    poster="https://res.cloudinary.com/ducsps1cw/image/upload/v1748524921/tarpa-video-poster_stu901.webp"
                     style={{
                       willChange: "transform",
                       backfaceVisibility: "hidden",
                     }}
                   >
-                    <source src="/images/tarpa-video.webm" type="video/webm" />
+                    <source
+                      src="https://res.cloudinary.com/ducsps1cw/video/upload/v1748550932/tarpa-video_wgmuev.webm"
+                      type="video/webm"
+                    />
                     Your browser does not support the video tag.
                   </video>
 

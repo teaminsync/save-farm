@@ -75,7 +75,12 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
               <div className="relative w-10 h-10">
-                <Image src="/images/save-farm-logo2.svg" alt="Save Farm Logo" fill className="object-contain" />
+                <Image
+                  src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748551548/save-farm-logo2_rwehbv.svg"
+                  alt="Save Farm Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="ml-2 font-serif text-xl">
                 S

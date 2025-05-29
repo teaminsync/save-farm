@@ -180,7 +180,13 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/contact-hero.webp" alt="Save Farm contact" fill className="object-cover" priority />
+          <Image
+            src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748551394/contact-hero_ryldaa.webp"
+            alt="Save Farm contact"
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-fern/30" />
         </div>
 

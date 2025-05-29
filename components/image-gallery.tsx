@@ -49,7 +49,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     return () => setIsMounted(false)
   }, [])
 
-  // Aggressive preloading of images
+  // Aggressive preloading of images - Updated for Cloudinary URLs
   useEffect(() => {
     const preloadImages = async () => {
       const imagePromises = images.map((image, index) => {
@@ -61,7 +61,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
 
           const img = new window.Image()
           img.src = image.src
-          img.crossOrigin = "anonymous"
+          // Remove crossOrigin for Cloudinary URLs as they handle CORS properly
 
           // Preload with high priority for first few images
           if (index < 3) {
@@ -295,7 +295,8 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
     )
   }
 
-  const placeholderImage = "/placeholder.svg?height=320&width=480"
+  // Updated fallback to use Cloudinary placeholder instead of local
+  const placeholderImage = "https://res.cloudinary.com/ducsps1cw/image/upload/v1748552372/placeholder_sabcwz.svg"
   const currentImage = images[currentIndex]
   const imageSrc = currentImage?.src && currentImage.src.trim() !== "" ? currentImage.src : placeholderImage
 
@@ -324,7 +325,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
                 }`}
               >
                 <NextImage
-                  src={src || "/placeholder.svg"}
+                  src={src}
                   alt={image?.alt || "Gallery image"}
                   fill
                   className="object-cover"
@@ -411,7 +412,7 @@ export default function ImageGallery({ images, autoplaySpeed = 5000 }: ImageGall
             <div className="relative max-w-5xl w-[95%] mx-auto" onClick={(e) => e.stopPropagation()}>
               <div className="relative aspect-video w-full">
                 <NextImage
-                  src={imageSrc || "/placeholder.svg"}
+                  src={imageSrc}
                   alt={currentImage?.alt || "Gallery image"}
                   fill
                   className="object-contain"

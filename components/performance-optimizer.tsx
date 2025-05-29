@@ -6,12 +6,12 @@ export default function PerformanceOptimizer() {
   useEffect(() => {
     // Preload critical images when component mounts
     const criticalImages = [
-      "/images/hero-background.webm",
-      "/images/video-poster.webp",
-      "/images/save-farm-logo.svg",
-      "/images/accommodation-preview.webp",
-      "/images/activities-preview.webp",
-      "/images/packages-preview.webp",
+      "https://res.cloudinary.com/ducsps1cw/video/upload/v1748522124/hero-background_sbg5xg.webm",
+      "https://res.cloudinary.com/ducsps1cw/image/upload/v1748524921/video-poster_def456.webp",
+      "https://res.cloudinary.com/ducsps1cw/image/upload/v1748524921/save-farm-logo_lkrlkl.svg",
+      "https://res.cloudinary.com/ducsps1cw/image/upload/v1748525283/accommodation-preview_hbcfip.webp",
+      "https://res.cloudinary.com/ducsps1cw/image/upload/v1748523519/activities-preview_w5igey.webp",
+      "https://res.cloudinary.com/ducsps1cw/image/upload/v1748525135/packages-preview_fwhrek.webp",
     ]
 
     const preloadImage = (src: string) => {

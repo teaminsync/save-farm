@@ -45,10 +45,10 @@ export default function AccommodationsPage() {
       description:
         "Originally constructed in 1989 to host farmers visiting our nursery, Shetkari Niwas has been thoughtfully renovated for guests seeking comfort and authenticity. These ground-level rooms feature senior-friendly bathrooms and can comfortably accommodate up to four guests each.",
       images: [
-        "/images/shetkari-niwas-1.webp",
-        "/images/shetkari-niwas-2.webp",
-        "/images/shetkari-niwas-3.webp",
-        "/images/shetkari-niwas-4.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549471/shetkari-niwas-1_lxserj.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549470/shetkari-niwas-2_fxxvrm.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549480/shetkari-niwas-3_j0ur7u.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549480/shetkari-niwas-4_ipzry9.webp",
       ],
       amenities: [
         "Ground-level access",
@@ -65,10 +65,10 @@ export default function AccommodationsPage() {
       description:
         "Tulasi Vrindavan exudes traditional Kokani charm with its Mangalorean tiled roof. This couple room is perfect for two guests seeking a cozy and culturally rich stay, with the option to accommodate one extra person.",
       images: [
-        "/images/tulasi-vrindavan-1.webp",
-        "/images/tulasi-vrindavan-2.webp",
-        "/images/tulasi-vrindavan-3.webp",
-        "/images/tulasi-vrindavan-4.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549484/tulasi-vrindavan-1_oq4wsc.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549485/tulasi-vrindavan-2_wnlql5.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549484/tulasi-vrindavan-3_zwdvzm.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549486/tulasi-vrindavan-4_lluazj.webp",
       ],
       amenities: [
         "Traditional Kokani architecture",
@@ -85,10 +85,10 @@ export default function AccommodationsPage() {
       description:
         "Crafted from sustainable bamboo, these huts offer an eco-friendly retreat amidst nature. With natural ventilation and rustic interiors, they provide a serene escape for guests seeking simplicity and tranquility.",
       images: [
-        "/images/bamboo-hut-1.webp",
-        "/images/bamboo-hut-2.webp",
-        "/images/bamboo-hut-3.webp",
-        "/images/bamboo-hut-4.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549515/bamboo-hut-1_cvfyfq.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549512/bamboo-hut-2_kx47ly.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549515/bamboo-hut-3_phqqlg.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549513/bamboo-hut-4_tg2ofs.webp",
       ],
       amenities: [
         "Eco-friendly bamboo construction",
@@ -105,10 +105,10 @@ export default function AccommodationsPage() {
       description:
         "The Coconut Log House features twin rooms with thatched roofs, each equipped with a double bed and a sofa-cum-double bed. It's an ideal choice for families of up to four members.",
       images: [
-        "/images/coconut-log-house-1.webp",
-        "/images/coconut-log-house-2.webp",
-        "/images/coconut-log-house-3.webp",
-        "/images/coconut-log-house-4.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549515/coconut-log-house-1_fxhwud.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549517/coconut-log-house-2_k0eqh9.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549520/coconut-log-house-3_lham4n.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549517/coconut-log-house-4_mlv3ff.webp",
       ],
       amenities: [
         "Thatched roof design",
@@ -125,10 +125,10 @@ export default function AccommodationsPage() {
       description:
         "Often referred to as the 'tree house' by our guests, the Machaan Hut is an elevated structure perfect for couples. It includes additional space at the ground level for relaxation and can accommodate one extra person.",
       images: [
-        "/images/machaan-hut-1.webp",
-        "/images/machaan-hut-2.webp",
-        "/images/machaan-hut-3.webp",
-        "/images/machaan-hut-4.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549493/machaan-hut-1_jptqes.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549505/machaan-hut-2_wdsqkg.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549499/machaan-hut-3_nlkgzq.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549508/machaan-hut-4_wozqcn.webp",
       ],
       amenities: [
         "Elevated 'tree house' design",
@@ -145,10 +145,10 @@ export default function AccommodationsPage() {
       description:
         "Our innovative Loft Huts are elevated structures designed for guests who prefer spacious accommodations. Each hut features a double bed and two additional beds on a mezzanine floor, accessible via an internal staircase, ideal for a family of four.",
       images: [
-        "/images/loft-huts-1.webp",
-        "/images/loft-huts-2.webp",
-        "/images/loft-huts-3.webp",
-        "/images/loft-huts-4.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549496/loft-huts-1_eiv0mc.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549494/loft-huts-2_pg44lh.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549504/loft-huts-3_w8fisu.webp",
+        "https://res.cloudinary.com/ducsps1cw/image/upload/v1748549497/loft-huts-4_i0ikmz.webp",
       ],
       amenities: [
         "Elevated structure with mezzanine floor",
@@ -165,7 +165,7 @@ export default function AccommodationsPage() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/accommodations-hero.webp"
+            src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748522040/accommodations-hero_s9wqox.webp"
             alt="Save Farm accommodations"
             fill
             className="object-cover"

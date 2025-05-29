@@ -49,21 +49,66 @@ export default function RootLayout({
         <link rel="preload" href="/fonts/Serena.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
 
         {/* Preload critical media with high priority */}
-        <link rel="preload" href="/images/hero-background.webm" as="video" type="video/webm" />
-        <link rel="preload" href="/images/video-poster.webp" as="image" />
-        <link rel="preload" href="/images/save-farm-logo.svg" as="image" />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/video/upload/v1748522124/hero-background_sbg5xg.webm"
+          as="video"
+          type="video/webm"
+        />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/image/upload/v1748524921/video-poster_def456.webp"
+          as="image"
+        />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/image/upload/v1748524921/save-farm-logo_lkrlkl.svg"
+          as="image"
+        />
+
+        {/* Preload key hero images */}
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/image/upload/v1748522040/accommodations-hero_s9wqox.webp"
+          as="image"
+        />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/image/upload/v1748548917/activities-hero_sy1i8s.webp"
+          as="image"
+        />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/image/upload/v1748550006/packages-hero_k5cdvs.webp"
+          as="image"
+        />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/image/upload/v1748550749/about-hero_irf1bj.webp"
+          as="image"
+        />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/image/upload/v1748550937/tarpa-hero_bs4r1m.webp"
+          as="image"
+        />
 
         {/* Preload key preview images */}
-        <link rel="preload" href="/images/accommodations-hero.webp" as="image" />
-        <link rel="preload" href="/images/activities-hero.webp" as="image" />
-        <link rel="preload" href="/images/packages-hero.webp" as="image" />
-        <link rel="preload" href="/images/about-hero.webp" as="image" />
-        <link rel="preload" href="/images/tarpa-hero.webp" as="image" />
-
-        {/* Preload key preview images */}
-        <link rel="preload" href="/images/accommodation-preview.webp" as="image" />
-        <link rel="preload" href="/images/activities-preview.webp" as="image" />
-        <link rel="preload" href="/images/packages-preview.webp" as="image" />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/image/upload/v1748525283/accommodation-preview_hbcfip.webp"
+          as="image"
+        />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/image/upload/v1748523519/activities-preview_w5igey.webp"
+          as="image"
+        />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/ducsps1cw/image/upload/v1748525135/packages-preview_fwhrek.webp"
+          as="image"
+        />
 
         {/* Load locomotive scroll CSS */}
         <link

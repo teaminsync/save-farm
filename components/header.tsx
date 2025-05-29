@@ -58,8 +58,8 @@ export default function Header() {
               <Image
                 src={
                   isScrolled || isMobileMenuOpen
-                    ? "/images/save-farm-logo2-scrolled.svg"
-                    : "/images/save-farm-logo2.svg"
+                    ? "https://res.cloudinary.com/ducsps1cw/image/upload/v1748551535/save-farm-logo2-scrolled_til7fw.svg"
+                    : "https://res.cloudinary.com/ducsps1cw/image/upload/v1748551548/save-farm-logo2_rwehbv.svg"
                 }
                 alt="Save Farm Logo"
                 fill

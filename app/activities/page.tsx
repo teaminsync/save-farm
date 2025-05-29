@@ -59,7 +59,7 @@ export default function ActivitiesPage() {
       name: "Farm Tour",
       description:
         "Embark on a comprehensive guided tour of Save Farm, exploring sustainable farming practices, diverse plant species, and innovative agricultural techniques.",
-      image: "/images/farm-tour.webp",
+      image: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748523519/farm-tour_w5igey.webp",
       highlights: [
         "Fruit-plant nursery exploration",
         "Greenhouses and shade houses",
@@ -133,12 +133,78 @@ export default function ActivitiesPage() {
     ],
   }
 
+  activityGalleries[1] = [
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548983/farm-tours-1_mj0rfl.webp",
+      alt: "Guided tour of organic farming practices",
+    },
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548982/farm-tours-2_eoegvj.webp",
+      alt: "Visitors learning about sustainable agriculture",
+    },
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548982/farm-tours-3_sx3diz.webp",
+      alt: "Farm animals interaction experience",
+    },
+  ]
+
+  activityGalleries[2] = [
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548952/rural-skills-1_mfssvl.webp",
+      alt: "Traditional pottery workshop in progress",
+    },
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548952/rural-skills-2_ld1nnp.webp",
+      alt: "Weaving demonstration with natural materials",
+    },
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548952/rural-skills-3_zhnguq.webp",
+      alt: "Organic farming techniques being taught",
+    },
+  ]
+
+  activityGalleries[3] = [
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548943/adventure-arena-1_kymlom.webp",
+      alt: "Exciting zipline adventure through the forest",
+    },
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548945/adventure-arena-2_jamhwa.webp",
+      alt: "Challenging rope course activities",
+    },
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548945/adventure-arena-3_pfvqga.webp",
+      alt: "Rock climbing wall for all skill levels",
+    },
+  ]
+
+  activityGalleries[4] = [
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548971/souvenir-shop-1_x4h7gw.webp",
+      alt: "Handcrafted local souvenirs on display",
+    },
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548971/souvenir-shop-2_ab2oke.webp",
+      alt: "Organic farm products available for purchase",
+    },
+    {
+      src: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748548972/souvenir-shop-3_xsol3v.webp",
+      alt: "Artisanal crafts made by local artisans",
+    },
+  ]
+
   return (
     <LocomotiveLayout>
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/activities-hero.webp" alt="Save Farm activities" fill className="object-cover" priority />
+          <Image
+            src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748548917/activities-hero_sy1i8s.webp"
+            alt="Save Farm activities"
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-fern/30" />
         </div>
 
@@ -206,7 +272,7 @@ export default function ActivitiesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative h-full min-h-[300px]">
                 <Image
-                  src="/images/tarpa-highlight.webp"
+                  src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748548935/tarpa-highlight_j5kblj.webp"
                   alt="Tarpa - Our Highlight Experience"
                   fill
                   className="object-cover"

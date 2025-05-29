@@ -41,7 +41,7 @@ export default function PackagesPage() {
       name: "One Day Farm Experience",
       description:
         "A wholesome single-day retreat designed for guests looking to enjoy authentic farm life near Mumbai.",
-      image: "/images/day-tour.webp",
+      image: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748550023/day-tour_jkpyec.webp",
       inclusions: ["1 Veg. meal", "1 Breakfast", "Guided Farm Tour", "Rural Life Skill Activities"],
       duration: "9:30 am to 3:30 pm same day",
       price: "₹1,000 per person",
@@ -51,7 +51,7 @@ export default function PackagesPage() {
       id: 2,
       name: "Farmstay - Double Occupancy",
       description: "Perfect for couples or two guests seeking peace and connection amidst serene farmlands.",
-      image: "/images/overnight-stay.webp",
+      image: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748550011/overnight-stay_htk0sx.webp",
       inclusions: ["2 Meals", "1 Breakfast", "Guided Farm Tour", "Rural Life Skill Activities"],
       duration: "Check-in 1:00 pm to 11:00 am next day",
       price: "₹7,500 for 2 guests",
@@ -61,7 +61,7 @@ export default function PackagesPage() {
       id: 3,
       name: "Farmstay - Family Room",
       description: "Designed for families to unwind and bond through shared rural experiences in comfort.",
-      image: "/images/weekend-retreat.webp",
+      image: "https://res.cloudinary.com/ducsps1cw/image/upload/v1748550018/weekend-retreat_yv8l7j.webp",
       inclusions: ["2 Meals", "1 Breakfast", "Guided Farm Tour", "Rural Life Skill Activities"],
       duration: "Check-in 1:00 pm to 11:00 am next day",
       price: "₹11,500 for 4 guests",
@@ -74,7 +74,13 @@ export default function PackagesPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/packages-hero.webp" alt="Save Farm packages" fill className="object-cover" priority />
+          <Image
+            src="https://res.cloudinary.com/ducsps1cw/image/upload/v1748550006/packages-hero_k5cdvs.webp"
+            alt="Save Farm packages"
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-fern/30" />
         </div>
 
