@@ -59,7 +59,7 @@ export default function ActivitiesPage() {
       name: "Farm Tour",
       description:
         "Embark on a comprehensive guided tour of Save Farm, exploring sustainable farming practices, diverse plant species, and innovative agricultural techniques.",
-      image: "/images/farm-tour.jpg",
+      image: "/images/farm-tour.webp",
       highlights: [
         "Fruit-plant nursery exploration",
         "Greenhouses and shade houses",
@@ -73,7 +73,7 @@ export default function ActivitiesPage() {
       name: "Rural Skills Workshops",
       description:
         "Participate in hands-on workshops to learn traditional rural arts and crafts, gaining insight into the cultural heritage of the region.",
-      image: "/images/rural-skills.jpg",
+      image: "/images/rural-skills.webp",
       highlights: [
         "Fishing techniques",
         "Mat weaving from coconut",
@@ -87,7 +87,7 @@ export default function ActivitiesPage() {
       name: "Adventure Activities",
       description:
         "Experience thrilling adventure activities designed amidst the natural landscape of Save Farm, suitable for guests seeking excitement and challenge.",
-      image: "/images/adventure-activities.jpg",
+      image: "/images/adventure-activities.webp",
       highlights: [
         "Zip-line over rainwater harvesting pond",
         "Rope course in coconut orchard",
@@ -100,7 +100,7 @@ export default function ActivitiesPage() {
       name: "Souvenir Shopping",
       description:
         "Browse and purchase unique souvenirs crafted by local artisans, including farm-fresh produce and traditional artworks.",
-      image: "/images/souvenir-shop.jpg",
+      image: "/images/souvenir-shop.webp",
       highlights: [
         "Fresh vegetables and fruits",
         "Processed farm products",
@@ -112,24 +112,24 @@ export default function ActivitiesPage() {
 
   const activityGalleries: ActivityGalleries = {
     1: [
-      { src: "/images/farm-tours-1.jpg", alt: "Guided tour of organic farming practices" },
-      { src: "/images/farm-tours-2.jpg", alt: "Visitors learning about sustainable agriculture" },
-      { src: "/images/farm-tours-3.jpg", alt: "Farm animals interaction experience" },
+      { src: "/images/farm-tours-1.webp", alt: "Guided tour of organic farming practices" },
+      { src: "/images/farm-tours-2.webp", alt: "Visitors learning about sustainable agriculture" },
+      { src: "/images/farm-tours-3.webp", alt: "Farm animals interaction experience" },
     ],
     2: [
-      { src: "/images/rural-skills-1.JPG", alt: "Traditional pottery workshop in progress" },
-      { src: "/images/rural-skills-2.jpg", alt: "Weaving demonstration with natural materials" },
-      { src: "/images/rural-skills-3.jpg", alt: "Organic farming techniques being taught" },
+      { src: "/images/rural-skills-1.webp", alt: "Traditional pottery workshop in progress" },
+      { src: "/images/rural-skills-2.webp", alt: "Weaving demonstration with natural materials" },
+      { src: "/images/rural-skills-3.webp", alt: "Organic farming techniques being taught" },
     ],
     3: [
-      { src: "/images/adventure-arena-1.jpg", alt: "Exciting zipline adventure through the forest" },
-      { src: "/images/adventure-arena-2.jpg", alt: "Challenging rope course activities" },
-      { src: "/images/adventure-arena-3.jpg", alt: "Rock climbing wall for all skill levels" },
+      { src: "/images/adventure-arena-1.webp", alt: "Exciting zipline adventure through the forest" },
+      { src: "/images/adventure-arena-2.webp", alt: "Challenging rope course activities" },
+      { src: "/images/adventure-arena-3.webp", alt: "Rock climbing wall for all skill levels" },
     ],
     4: [
-      { src: "/images/souvenir-shop-1.jpg", alt: "Handcrafted local souvenirs on display" },
-      { src: "/images/souvenir-shop-2.jpg", alt: "Organic farm products available for purchase" },
-      { src: "/images/souvenir-shop-3.jpg", alt: "Artisanal crafts made by local artisans" },
+      { src: "/images/souvenir-shop-1.webp", alt: "Handcrafted local souvenirs on display" },
+      { src: "/images/souvenir-shop-2.webp", alt: "Organic farm products available for purchase" },
+      { src: "/images/souvenir-shop-3.webp", alt: "Artisanal crafts made by local artisans" },
     ],
   }
 
@@ -138,7 +138,7 @@ export default function ActivitiesPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/activities-hero.jpg" alt="Save Farm activities" fill className="object-cover" priority />
+          <Image src="/images/activities-hero.webp" alt="Save Farm activities" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-fern/30" />
         </div>
 
@@ -206,7 +206,7 @@ export default function ActivitiesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative h-full min-h-[300px]">
                 <Image
-                  src="/images/tarpa-highlight.jpg"
+                  src="/images/tarpa-highlight.webp"
                   alt="Tarpa - Our Highlight Experience"
                   fill
                   className="object-cover"

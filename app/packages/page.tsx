@@ -39,48 +39,34 @@ export default function PackagesPage() {
     {
       id: 1,
       name: "One Day Farm Experience",
-      description: "A wholesome single-day retreat designed for guests looking to enjoy authentic farm life near Mumbai.",
-      image: "/images/day-tour.jpg",
-      inclusions: [
-        "1 Veg. meal",
-        "1 Breakfast",
-        "Guided Farm Tour",
-        "Rural Life Skill Activities"
-      ],
+      description:
+        "A wholesome single-day retreat designed for guests looking to enjoy authentic farm life near Mumbai.",
+      image: "/images/day-tour.webp",
+      inclusions: ["1 Veg. meal", "1 Breakfast", "Guided Farm Tour", "Rural Life Skill Activities"],
       duration: "9:30 am to 3:30 pm same day",
       price: "₹1,000 per person",
-      priceGroup: "Children up to 4 yrs (1 per 2 guests): Free | 4–8 yrs: ₹500"
+      priceGroup: "Children up to 4 yrs (1 per 2 guests): Free | 4–8 yrs: ₹500",
     },
     {
       id: 2,
       name: "Farmstay - Double Occupancy",
       description: "Perfect for couples or two guests seeking peace and connection amidst serene farmlands.",
-      image: "/images/weekend-retreat.jpg",
-      inclusions: [
-        "2 Meals",
-        "1 Breakfast",
-        "Guided Farm Tour",
-        "Rural Life Skill Activities"
-      ],
+      image: "/images/overnight-stay.webp",
+      inclusions: ["2 Meals", "1 Breakfast", "Guided Farm Tour", "Rural Life Skill Activities"],
       duration: "Check-in 1:00 pm to 11:00 am next day",
       price: "₹7,500 for 2 guests",
-      priceGroup: "1 child (up to 8 yrs) per room: Complimentary"
+      priceGroup: "1 child (up to 8 yrs) per room: Complimentary",
     },
     {
       id: 3,
       name: "Farmstay - Family Room",
       description: "Designed for families to unwind and bond through shared rural experiences in comfort.",
-      image: "/images/overnight-stay.jpg",
-      inclusions: [
-        "2 Meals",
-        "1 Breakfast",
-        "Guided Farm Tour",
-        "Rural Life Skill Activities"
-      ],
+      image: "/images/weekend-retreat.webp",
+      inclusions: ["2 Meals", "1 Breakfast", "Guided Farm Tour", "Rural Life Skill Activities"],
       duration: "Check-in 1:00 pm to 11:00 am next day",
       price: "₹11,500 for 4 guests",
-      priceGroup: "Extra person: ₹2,000 per night | 1 child (up to 8 yrs) free per room"
-    }
+      priceGroup: "Extra person: ₹2,000 per night | 1 child (up to 8 yrs) free per room",
+    },
   ]
 
   return (
@@ -88,7 +74,7 @@ export default function PackagesPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/packages-hero.jpg" alt="Save Farm packages" fill className="object-cover" priority />
+          <Image src="/images/packages-hero.webp" alt="Save Farm packages" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-fern/30" />
         </div>
 
@@ -233,15 +219,16 @@ export default function PackagesPage() {
                 <h3 className="text-xl font-serif text-fern mb-4">How to Book</h3>
                 <p className="text-natural mb-6">
                   Booking your stay at Save Farm is simple. Contact us through our website, email, or phone to check
-                  availability and confirm your reservation. We recommend booking at least two weeks in advance for weekend
-                  stays.
+                  availability and confirm your reservation. We recommend booking at least two weeks in advance for
+                  weekend stays.
                 </p>
                 <p className="text-natural mb-6">
                   A 50% advance payment is required to secure your slot. Balance payment can be made on arrival via UPI,
                   bank transfer, or cash.
                 </p>
                 <p className="text-natural">
-                  For group bookings (10+ guests), please reach out to us directly for customized pricing and assistance.
+                  For group bookings (10+ guests), please reach out to us directly for customized pricing and
+                  assistance.
                 </p>
               </div>
 
@@ -287,9 +274,7 @@ export default function PackagesPage() {
                   </li>
                   <li className="flex items-baseline gap-3">
                     <span className="w-2 h-2 bg-fern rounded-full mt-1 shrink-0" />
-                    <span className="text-natural leading-relaxed">
-                      All listed prices are inclusive of GST.
-                    </span>
+                    <span className="text-natural leading-relaxed">All listed prices are inclusive of GST.</span>
                   </li>
                 </ul>
               </div>

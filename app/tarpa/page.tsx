@@ -82,19 +82,19 @@ export default function TarpaPage() {
 
   const tarpaGalleryImages = [
     {
-      src: "/images/tarpa-1.jpg",
+      src: "/images/tarpa-1.webp",
       alt: "Tarpa musical instrument being played during a cultural ceremony",
     },
     {
-      src: "/images/tarpa-2.jpg",
+      src: "/images/tarpa-2.webp",
       alt: "Traditional Warli dance performance at Save Farm",
     },
     {
-      src: "/images/tarpa-3.jpg",
+      src: "/images/tarpa-3.webp",
       alt: "Eco-friendly accommodations surrounded by nature",
     },
     {
-      src: "/images/tarpa-4.jpg",
+      src: "/images/tarpa-4.webp",
       alt: "Organic farming practices at Save Farm",
     },
   ]
@@ -104,31 +104,31 @@ export default function TarpaPage() {
       title: "Tribal Culture & Heritage",
       description:
         "Engage with the Warli community through storytelling, folk art, and dance performances that celebrate indigenous traditions and way of life.",
-      image: "/images/tarpa-cultural.png",
+      image: "/images/tarpa-cultural.webp",
     },
     {
       title: "Sustainable Stay",
       description:
         "Our nature-inspired accommodations are crafted using eco-friendly materials, designed to offer comfort while treading lightly on the earth.",
-      image: "/images/tarpa-accommodations.jpg",
+      image: "/images/tarpa-accommodations.webp",
     },
     {
       title: "Guided Farm Walks",
       description:
         "Join our curated walks to explore organic farms, water harvesting systems, and native plant species while learning about rural sustainability.",
-      image: "/images/tarpa-nature-walks.JPEG",
+      image: "/images/tarpa-nature-walks.webp",
     },
     {
       title: "Rural Activities & Handicrafts",
       description:
         "Try your hand at traditional activities like mat weaving, pottery, or bamboo craft in interactive sessions guided by local artisans.",
-      image: "/images/tarpa-workshops.JPEG",
+      image: "/images/tarpa-workshops.webp",
     },
     {
       title: "Seasonal Meals from the Farm",
       description:
         "Enjoy freshly prepared meals using organic ingredients sourced directly from the farm, reflecting the seasonal bounty of the region.",
-      image: "/images/tarpa-cuisine.JPEG",
+      image: "/images/tarpa-cuisine.webp",
     },
   ]
 
@@ -139,7 +139,7 @@ export default function TarpaPage() {
         <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/tarpa-hero.jpg"
+              src="/images/tarpa-hero.webp"
               alt="Tarpa - Save Farm's signature experience"
               fill
               className="object-cover"
@@ -201,13 +201,13 @@ export default function TarpaPage() {
                     playsInline
                     preload="auto"
                     className="w-[70%] max-w-[700px] h-auto rounded-xl shadow-lg"
-                    poster="/images/tarpa-video-poster.jpg"
+                    poster="/images/tarpa-video-poster.webp"
                     style={{
                       willChange: "transform",
                       backfaceVisibility: "hidden",
                     }}
                   >
-                    <source src="/images/tarpa-video.mp4" type="video/mp4" />
+                    <source src="/images/tarpa-video.webm" type="video/webm" />
                     Your browser does not support the video tag.
                   </video>
 

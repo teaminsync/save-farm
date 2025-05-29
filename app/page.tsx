@@ -135,14 +135,14 @@ export default function Home() {
         <motion.div className="absolute inset-0 z-0" style={{ opacity, scale }}>
           <video
             ref={videoRef}
-            src="/images/hero-background.mp4"
+            src="/images/hero-background.webm"
             autoPlay
             playsInline
             muted
             loop
             preload="auto"
             className="object-cover w-full h-full"
-            poster="/images/video-poster.png"
+            poster="/images/video-poster.webp"
             style={{
               willChange: "transform",
               backfaceVisibility: "hidden",
@@ -286,7 +286,7 @@ export default function Home() {
             >
               <div className="relative h-60">
                 <Image
-                  src="/images/accommodation-preview.jpg"
+                  src="/images/accommodation-preview.webp"
                   alt="Luxury accommodations at Save Farm"
                   fill
                   className="object-cover"
@@ -320,7 +320,7 @@ export default function Home() {
             >
               <div className="relative h-60">
                 <Image
-                  src="/images/activities-preview.jpg"
+                  src="/images/activities-preview.webp"
                   alt="Farm activities and adventures"
                   fill
                   className="object-cover"
@@ -353,7 +353,7 @@ export default function Home() {
             >
               <div className="relative h-60">
                 <Image
-                  src="/images/packages-preview.jpg"
+                  src="/images/packages-preview.webp"
                   alt="Save Farm packages and experiences"
                   fill
                   className="object-cover"
@@ -402,7 +402,6 @@ export default function Home() {
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-serif mb-6">Questions About Your Stay?</h2>

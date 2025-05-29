@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Montserrat, Playfair_Display } from 'next/font/google'
+import { Montserrat, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     "Experience serenity in the heart of nature at Save Farm, where modern comfort blends with sustainable living.",
   generator: "InSync Solutions",
   icons: {
-    icon: '/favicon.ico',
-    apple: '/favicon.ico',
+    icon: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 }
 
@@ -49,21 +49,21 @@ export default function RootLayout({
         <link rel="preload" href="/fonts/Serena.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
 
         {/* Preload critical media with high priority */}
-        <link rel="preload" href="/images/hero-background.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/images/video-poster.png" as="image" />
+        <link rel="preload" href="/images/hero-background.webm" as="video" type="video/webm" />
+        <link rel="preload" href="/images/video-poster.webp" as="image" />
         <link rel="preload" href="/images/save-farm-logo.svg" as="image" />
 
         {/* Preload key preview images */}
-        <link rel="preload" href="/images/accommodations-hero.jpg" as="image" />
-        <link rel="preload" href="/images/activities-hero.jpg" as="image" />
-        <link rel="preload" href="/images/packages-hero.jpg" as="image" />
-        <link rel="preload" href="/images/about-hero.jpg" as="image" />
-        <link rel="preload" href="/images/tarpa-hero.jpg" as="image" />
+        <link rel="preload" href="/images/accommodations-hero.webp" as="image" />
+        <link rel="preload" href="/images/activities-hero.webp" as="image" />
+        <link rel="preload" href="/images/packages-hero.webp" as="image" />
+        <link rel="preload" href="/images/about-hero.webp" as="image" />
+        <link rel="preload" href="/images/tarpa-hero.webp" as="image" />
 
         {/* Preload key preview images */}
-        <link rel="preload" href="/images/accommodation-preview.jpg" as="image" />
-        <link rel="preload" href="/images/activities-preview.jpg" as="image" />
-        <link rel="preload" href="/images/packages-preview.jpg" as="image" />
+        <link rel="preload" href="/images/accommodation-preview.webp" as="image" />
+        <link rel="preload" href="/images/activities-preview.webp" as="image" />
+        <link rel="preload" href="/images/packages-preview.webp" as="image" />
 
         {/* Load locomotive scroll CSS */}
         <link

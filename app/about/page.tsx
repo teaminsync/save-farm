@@ -101,7 +101,7 @@ export default function AboutPage() {
         {
           question: "What makes Save Farm different from a typical resort?",
           answer:
-            "We’re a 30-acre working chikoo orchard and agro‑tourism unit registered with the Directorate of Tourism, Maharashtra. Guests live amid real farm operations, interact with farm activities, and experience authentic rural life—yet sleep in clean, well‑appointed cottages.",
+            "We're a 30-acre working chikoo orchard and agro‑tourism unit registered with the Directorate of Tourism, Maharashtra. Guests live amid real farm operations, interact with farm activities, and experience authentic rural life—yet sleep in clean, well‑appointed cottages.",
         },
         {
           question: "Is Save Farm suitable for families with young children?",
@@ -116,7 +116,7 @@ export default function AboutPage() {
         {
           question: "What accommodation categories do you offer?",
           answer:
-            "We offer two accommodation categories, distinguished only by capacity while the amenities across all the rooms remain the same:\n\n• Couple rooms: Suitable for 2 guests.\n\n• Family rooms: Suitable for 4 guests.\n\nEach room can accommodate 1 extra person, with either a mattress or a single bed if already available in the room. The charges for an extra person can be enquired while booking.",
+            "We offer two accommodation categories, distinguished only by capacity while the amenities across all the rooms remain the same:\n\n• Couple rooms: Suitable for 2 guests.\n\n• Family rooms: Suitable for 4 guests.\n\nEach room can accommodate 1 extra person, with either a mattress or a single bed if already available in the room. The charges for an extra person can be enquired while booking.",
         },
         {
           question: "Do you have air‑conditioned rooms?",
@@ -130,7 +130,7 @@ export default function AboutPage() {
         {
           question: "What are your check‑in / check‑out times?",
           answer:
-            "Check‑in: 1 pm to Check‑out: 11 am next day. Early check‑in / late check‑out depend on availability and may attract half‑day charges.",
+            "Check‑in: 1 pm to Check‑out: 11 am next day. Early check‑in / late check‑out depend on availability and may attract half‑day charges.",
         },
       ],
     },
@@ -149,7 +149,7 @@ export default function AboutPage() {
         {
           question: "Meal timings (fixed)",
           answer:
-            "• Bed‑tea: 7 – 8 am\n• Breakfast: 9 – 10:30 am\n• Lunch: 1:30 – 3 pm\n• High‑tea / Snacks: 5 – 6 pm\n• Dinner: 8:30 pm (We encourage guests to arrive at this time to enjoy freshly prepared hot meals.)",
+            "• Bed‑tea: 7 – 8 am\n• Breakfast: 9 – 10:30 am\n• Lunch: 1:30 – 3 pm\n• High‑tea / Snacks: 5 – 6 pm\n• Dinner: 8:30 pm (We encourage guests to arrive at this time to enjoy freshly prepared hot meals.)",
         },
         {
           question: "Can you cater to special diets?",
@@ -168,7 +168,7 @@ export default function AboutPage() {
         },
         {
           question: "Is day‑entry possible?",
-          answer: "Yes, 9:30 am – 3:30 pm with pre-booking. Packages include lunch, high-tea, and a farm tour.",
+          answer: "Yes, 9:30 am – 3:30 pm with pre-booking. Packages include lunch, high-tea, and a farm tour.",
         },
       ],
     },
@@ -200,12 +200,12 @@ export default function AboutPage() {
       faqs: [
         {
           question: "How do I confirm a stay?",
-          answer: "50 % advance via UPI or net‑banking secures your dates. Balance due at check‑in.",
+          answer: "50 % advance via UPI or net‑banking secures your dates. Balance due at check‑in.",
         },
         {
           question: "Cancellation terms",
           answer:
-            "• Free reschedule or full refund up to 14 days before check‑in.\n• 50 % of the booking amount is refund 7–13 days prior.\n• No refund within 7 days.",
+            "• Free reschedule or full refund up to 14 days before check‑in.\n• 50 % of the booking amount is refund 7–13 days prior.\n• No refund within 7 days.",
         },
         {
           question: "Do you accept corporate or group bookings?",
@@ -220,7 +220,7 @@ export default function AboutPage() {
         {
           question: "Nearest railway station / airport?",
           answer:
-            "Rail: Gholvad and Dahanu Rd. (WR local + long‑distance). Air: Mumbai (BOM) or Surat (STV) airports—both within 3 hrs by road.",
+            "Rail: Gholvad and Dahanu Rd. (WR local + long‑distance). Air: Mumbai (BOM) or Surat (STV) airports—both within 3 hrs by road.",
         },
         {
           question: "Parking?",
@@ -239,7 +239,7 @@ export default function AboutPage() {
         {
           question: "Medical facilities nearby?",
           answer:
-            "A 24 × 7 Govt. Primary Health Center is 4 km away; a multispeciality hospital is located in Dahanu (20 km). Basic first‑aid is available on‑site.",
+            "A 24 × 7 Govt. Primary Health Center is 4 km away; a multispeciality hospital is located in Dahanu (20 km). Basic first‑aid is available on‑site.",
         },
       ],
     },
@@ -250,7 +250,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/about-hero.jpg" alt="Save Farm landscape" fill className="object-cover" priority />
+          <Image src="/images/about-hero.webp" alt="Save Farm landscape" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-fern/30" />
         </div>
 
@@ -320,7 +320,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Whether it’s walking through our orchards, joining a Warli art session, or simply listening to birdsong at
+              Whether it's walking through our orchards, joining a Warli art session, or simply listening to birdsong at
               sunrise—Save Farm invites you to slow down, engage with your surroundings, and rediscover the joy of
               living in harmony with nature.
             </motion.p>
@@ -351,7 +351,7 @@ export default function AboutPage() {
               >
                 <div className="relative h-80 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/farm-history.JPEG"
+                    src="/images/farm-history.webp"
                     alt="Save Farm in its early days"
                     fill
                     className="object-cover"
@@ -369,7 +369,7 @@ export default function AboutPage() {
                 <p className="text-natural text-lg mb-6 leading-relaxed">
                   Save Farm was born from a dream to transform barren land into a thriving horticultural paradise. What
                   began in 1970 as a passion project by the Save family soon blossomed into a lush orchard in
-                  Maharashtra’s Konkan region.
+                  Maharashtra's Konkan region.
                 </p>
 
                 <p className="text-natural text-lg mb-6 leading-relaxed">

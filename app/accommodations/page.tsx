@@ -45,10 +45,10 @@ export default function AccommodationsPage() {
       description:
         "Originally constructed in 1989 to host farmers visiting our nursery, Shetkari Niwas has been thoughtfully renovated for guests seeking comfort and authenticity. These ground-level rooms feature senior-friendly bathrooms and can comfortably accommodate up to four guests each.",
       images: [
-        "/images/shetkari-niwas-1.jpg",
-        "/images/shetkari-niwas-2.jpg",
-        "/images/shetkari-niwas-3.jpg",
-        "/images/shetkari-niwas-4.jpg",
+        "/images/shetkari-niwas-1.webp",
+        "/images/shetkari-niwas-2.webp",
+        "/images/shetkari-niwas-3.webp",
+        "/images/shetkari-niwas-4.webp",
       ],
       amenities: [
         "Ground-level access",
@@ -65,10 +65,10 @@ export default function AccommodationsPage() {
       description:
         "Tulasi Vrindavan exudes traditional Kokani charm with its Mangalorean tiled roof. This couple room is perfect for two guests seeking a cozy and culturally rich stay, with the option to accommodate one extra person.",
       images: [
-        "/images/tulasi-vrindavan-1.jpg",
-        "/images/tulasi-vrindavan-2.jpg",
-        "/images/tulasi-vrindavan-3.jpg",
-        "/images/tulasi-vrindavan-4.jpg",
+        "/images/tulasi-vrindavan-1.webp",
+        "/images/tulasi-vrindavan-2.webp",
+        "/images/tulasi-vrindavan-3.webp",
+        "/images/tulasi-vrindavan-4.webp",
       ],
       amenities: [
         "Traditional Kokani architecture",
@@ -85,10 +85,10 @@ export default function AccommodationsPage() {
       description:
         "Crafted from sustainable bamboo, these huts offer an eco-friendly retreat amidst nature. With natural ventilation and rustic interiors, they provide a serene escape for guests seeking simplicity and tranquility.",
       images: [
-        "/images/bamboo-hut-1.jpg",
-        "/images/bamboo-hut-2.jpg",
-        "/images/bamboo-hut-3.jpg",
-        "/images/bamboo-hut-4.jpg",
+        "/images/bamboo-hut-1.webp",
+        "/images/bamboo-hut-2.webp",
+        "/images/bamboo-hut-3.webp",
+        "/images/bamboo-hut-4.webp",
       ],
       amenities: [
         "Eco-friendly bamboo construction",
@@ -105,10 +105,10 @@ export default function AccommodationsPage() {
       description:
         "The Coconut Log House features twin rooms with thatched roofs, each equipped with a double bed and a sofa-cum-double bed. It's an ideal choice for families of up to four members.",
       images: [
-        "/images/coconut-log-house-1.jpg",
-        "/images/coconut-log-house-2.jpg",
-        "/images/coconut-log-house-3.jpg",
-        "/images/coconut-log-house-4.jpg",
+        "/images/coconut-log-house-1.webp",
+        "/images/coconut-log-house-2.webp",
+        "/images/coconut-log-house-3.webp",
+        "/images/coconut-log-house-4.webp",
       ],
       amenities: [
         "Thatched roof design",
@@ -125,10 +125,10 @@ export default function AccommodationsPage() {
       description:
         "Often referred to as the 'tree house' by our guests, the Machaan Hut is an elevated structure perfect for couples. It includes additional space at the ground level for relaxation and can accommodate one extra person.",
       images: [
-        "/images/machaan-hut-1.jpg",
-        "/images/machaan-hut-2.jpg",
-        "/images/machaan-hut-3.jpg",
-        "/images/machaan-hut-4.jpg",
+        "/images/machaan-hut-1.webp",
+        "/images/machaan-hut-2.webp",
+        "/images/machaan-hut-3.webp",
+        "/images/machaan-hut-4.webp",
       ],
       amenities: [
         "Elevated 'tree house' design",
@@ -145,10 +145,10 @@ export default function AccommodationsPage() {
       description:
         "Our innovative Loft Huts are elevated structures designed for guests who prefer spacious accommodations. Each hut features a double bed and two additional beds on a mezzanine floor, accessible via an internal staircase, ideal for a family of four.",
       images: [
-        "/images/loft-huts-1.jpg",
-        "/images/loft-huts-2.jpg",
-        "/images/loft-huts-3.jpg",
-        "/images/loft-huts-4.jpg",
+        "/images/loft-huts-1.webp",
+        "/images/loft-huts-2.webp",
+        "/images/loft-huts-3.webp",
+        "/images/loft-huts-4.webp",
       ],
       amenities: [
         "Elevated structure with mezzanine floor",
@@ -165,7 +165,7 @@ export default function AccommodationsPage() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden" data-scroll-section>
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/accommodations-hero.jpg"
+            src="/images/accommodations-hero.webp"
             alt="Save Farm accommodations"
             fill
             className="object-cover"
