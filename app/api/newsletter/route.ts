@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
 
     const googleRes = await fetch(
-      "https://script.google.com/macros/s/AKfycbyPeylSzOUqZswg6QvHsbAaz2NOZwEQFx6Zxp-xlYu77fSlkKpncWbIqdwVjir2A0Ji/exec",
+      process.env.NEXT_PUBLIC_SHEETS_NEWS!,
       {
         method: "POST",
         headers: {

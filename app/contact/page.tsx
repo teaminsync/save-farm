@@ -128,7 +128,7 @@ export default function ContactPage() {
 
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbzUKlQ_FrTDKqi4qud7qrzOF1jXlpQyTfE4AvyuDrLLHPPL80cEpIH5uJuS6p0c3NTrBg/exec",
+        process.env.NEXT_PUBLIC_SHEETS_FORM!,
         {
           method: "POST",
           body: JSON.stringify(formData),
