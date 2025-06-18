@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
       // Send email
       const mailOptions = {
         from: `"Save Farm" <${process.env.GMAIL_USER}>`,
-        to: "aditya@savefarm.in, info@savefarm.in",
+        to: "aditya@savefarm.in, info@savefarm.in, devansh.sawant@somaiya.edu",
         subject: `New Inquiry from ${name} - Save Farm`,
         html: htmlContent,
         // Optional: Add reply-to if customer provided email
