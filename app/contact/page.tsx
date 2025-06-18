@@ -127,22 +127,22 @@ export default function ContactPage() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_SHEETS_FORM!,
-        {
-          method: "POST",
-          body: JSON.stringify(formData),
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      )
+        body: JSON.stringify(formData),
+      })
 
       const result = await response.json()
 
-      if (result.result === "success") {
+      if (result.success) {
         toast({
           title: "Message Sent Successfully",
           description: "Thank you for contacting Save Farm. We'll get back to you soon!",
           variant: "success",
-          duration: 4000, // 4 seconds for contact form
+          duration: 4000,
         })
 
         setFormData({
@@ -157,9 +157,9 @@ export default function ContactPage() {
       } else {
         toast({
           title: "Something went wrong",
-          description: "Please try again or contact us directly.",
+          description: result.message || "Please try again or contact us directly.",
           variant: "destructive",
-          duration: 4000, // 4 seconds for contact form
+          duration: 4000,
         })
       }
     } catch (error) {
