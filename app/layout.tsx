@@ -9,6 +9,8 @@ import AudioControlButton from "@/components/audio-control-button"
 import { AudioProvider } from "@/context/audio-context"
 import CustomCursor from "@/components/custom-cursor"
 import PerformanceOptimizer from "@/components/performance-optimizer"
+import { Analytics } from "@/components/analytics"
+import { Suspense } from "react"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -130,11 +132,14 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <AudioProvider>
             <PerformanceOptimizer />
-            {children}
-            <FloatingContactButton />
-            <AudioControlButton />
-            <CustomCursor />
-            <Toaster />
+            <Analytics />
+            <Suspense fallback={null}>
+              {children}
+              <FloatingContactButton />
+              <AudioControlButton />
+              <CustomCursor />
+              <Toaster />
+            </Suspense>
           </AudioProvider>
         </ThemeProvider>
       </body>
