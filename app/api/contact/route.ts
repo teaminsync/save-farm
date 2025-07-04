@@ -4,7 +4,18 @@ import nodemailer from "nodemailer"
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.json()
-    const { name, email, phone, message, visitors, package: selectedPackage, room } = formData
+    const {
+      name,
+      email,
+      phone,
+      message,
+      visitors,
+      package: selectedPackage,
+      room,
+      checkinDate,
+      checkoutDate,
+      numberOfDays,
+    } = formData
 
     // First, submit to Google Sheets (existing functionality)
     let sheetsSuccess = false
@@ -77,6 +88,36 @@ export async function POST(request: NextRequest) {
                 <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #2d5016;">Room:</td>
                 <td style="padding: 10px; border-bottom: 1px solid #eee;">${room}</td>
               </tr>
+              ${
+                checkinDate
+                  ? `
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #2d5016;">Check-in Date:</td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">${new Date(checkinDate).toLocaleDateString("en-IN")}</td>
+              </tr>
+              `
+                  : ""
+              }
+              ${
+                checkoutDate
+                  ? `
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #2d5016;">Check-out Date:</td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">${new Date(checkoutDate).toLocaleDateString("en-IN")}</td>
+              </tr>
+              `
+                  : ""
+              }
+              ${
+                numberOfDays
+                  ? `
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #2d5016;">Number of Days:</td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">${numberOfDays}</td>
+              </tr>
+              `
+                  : ""
+              }
             </table>
 
             ${
@@ -123,7 +164,7 @@ export async function POST(request: NextRequest) {
       // Send email
       const mailOptions = {
         from: `"Save Farm" <${process.env.GMAIL_USER}>`,
-        to: "aditya@savefarm.in, info@savefarm.in, devansh.sawant@somaiya.edu",
+        to: "aditya@savefarm.in, info@savefarm.in",
         subject: `New Inquiry from ${name} - Save Farm`,
         html: htmlContent,
         // Optional: Add reply-to if customer provided email

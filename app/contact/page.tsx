@@ -25,6 +25,9 @@ interface FormData {
   visitors: number | string
   package: string
   room: string
+  checkinDate: string
+  checkoutDate: string
+  numberOfDays: number | string
 }
 
 interface FormErrors {
@@ -43,6 +46,9 @@ export default function ContactPage() {
     visitors: 1,
     package: "",
     room: "",
+    checkinDate: "",
+    checkoutDate: "",
+    numberOfDays: "",
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
@@ -153,6 +159,9 @@ export default function ContactPage() {
           visitors: 1,
           package: "",
           room: "",
+          checkinDate: "",
+          checkoutDate: "",
+          numberOfDays: "",
         })
       } else {
         toast({
@@ -351,6 +360,55 @@ export default function ContactPage() {
                       <option value="Loft Huts">Loft Huts</option>
                     </select>
                     {errors.room && <p className="text-red-500 text-sm">{errors.room}</p>}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {/* Check-in Date Field */}
+                  <div className="space-y-2">
+                    <Label htmlFor="checkinDate" className="text-natural">
+                      Check-in Date (Optional)
+                    </Label>
+                    <Input
+                      id="checkinDate"
+                      name="checkinDate"
+                      type="date"
+                      value={formData.checkinDate}
+                      onChange={handleChange}
+                      className="w-full border-natural/20 focus:border-fern"
+                    />
+                  </div>
+
+                  {/* Check-out Date Field */}
+                  <div className="space-y-2">
+                    <Label htmlFor="checkoutDate" className="text-natural">
+                      Check-out Date (Optional)
+                    </Label>
+                    <Input
+                      id="checkoutDate"
+                      name="checkoutDate"
+                      type="date"
+                      value={formData.checkoutDate}
+                      onChange={handleChange}
+                      className="w-full border-natural/20 focus:border-fern"
+                    />
+                  </div>
+
+                  {/* Number of Days Field */}
+                  <div className="space-y-2">
+                    <Label htmlFor="numberOfDays" className="text-natural">
+                      No. of Days (Optional)
+                    </Label>
+                    <Input
+                      id="numberOfDays"
+                      name="numberOfDays"
+                      type="number"
+                      min="1"
+                      value={formData.numberOfDays}
+                      onChange={handleChange}
+                      className="w-full border-natural/20 focus:border-fern"
+                      placeholder="Enter days"
+                    />
                   </div>
                 </div>
 
