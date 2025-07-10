@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     "Experience serenity in the heart of nature at Save Farm, where modern comfort blends with sustainable living.",
   generator: "InSync Solutions",
   icons: {
-    icon: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/favicon-dark.ico",
+    apple: "/favicon-dark.ico",
   },
 }
 
